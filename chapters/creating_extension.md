@@ -117,19 +117,52 @@ For example, there is a list of `BuiltIn` enums, and its `PointSize` entry is:
   },
 ```
 
-An enum entry can also have an `extensions` attribute to list the SPIR-V extensions that enable the feature. As a design principle, we only use these on the capabilities introduced by the extension. Other tokens introduced by the extension are in turn guarded by the corresponding capability.
+Enum entries within a list should be ordered by their value. The spec generator writes table entries in the same order as JSON file order.
 
-For example, this is the entry for the `SubgroupBallotKHR` capability:
+
+An enum entry can also have attributes to describe when the feature exists:
+
+- The `version` attribute corresponds to the
+  "[missing before](https://www.khronos.org/registry/spir-v/specs/unified1/SPIRV.html#Unified)"
+  annotation in the SPIR-V specification.
+  If present, the `version` attribute indicates the first SPIR-V version in which the feature exists
+  as part of the core specification, without the need to use an `OpExtension` instruction.
+- The `extension` attribute, if present, indicates the name of the extension to use
+  with the `OpExtension` instruction when the feature is not yet part of the core SPIR-V specification.
+  The extension attribute takes the form of a list, in case a feature can be exposed through multiple
+  extensions.
+
+See [2.22 Unified Specification](https://www.khronos.org/registry/spir-v/specs/unified1/SPIRV.html#Unified)
+in the SPIR-V specification for more information.
+
+As a design principle, use the `extension` attribute on the capabilities introduced by the extension.
+Other tokens introduced by the extension are in turn guarded by the corresponding capability.
+
+For example, this is the entry for the `ShaderViewportIndexLayerEXT` capability:
 
 ```
   {
-    "enumerant" : "SubgroupBallotKHR",
-    "value" : "4423",
-    "extensions" : [ "SPV_KHR_shader_ballot" ]
+    "enumerant" : "ShaderViewportIndexLayerEXT",
+    "value" : 5254,
+    "capabilities" : [ "MultiViewport" ],
+    "extensions" : [ "SPV_EXT_shader_viewport_index_layer" ],
+    "version" : "None"
   },
 ```
 
-Enum entries within a list should be ordered by their value. The spec generator writes table entries in the same order as JSON file order.
+This is one of the tokens enabled by the extension, the `ViewportIndex` `BuiltIn`:
+
+```
+  {
+    "enumerant" : "ViewportIndex",
+    "value" : 10,
+    "capabilities" : [ "MultiViewport", "ShaderViewportIndex", "ShaderViewportIndexLayerEXT" ]
+  },
+```
+
+Note that the `ViewportIndex` token can be enabled by `ShaderViewportIndexLayerEXT`, and in turn
+that capability is enabled by the extension.
+
 
 ### Special considerations when adding an instruction
 
