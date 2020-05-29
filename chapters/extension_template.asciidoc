@@ -1,0 +1,122 @@
+SPV_TYPE_extension_name
+===================================
+
+Name Strings
+------------
+
+SPV_TYPE_extension_name
+
+Contact
+-------
+
+To report problems with this extension, please open a new issue at:
+
+https://github.com/KhronosGroup/SPIRV-Headers
+
+Contributors
+------------
+
+- Your Name, affiliation
+
+Status
+------
+
+- Complete
+
+Version
+-------
+
+[width="40%",cols="25,25"]
+|========================================
+| Last Modified Date | 2000-12-31
+| Revision           | 1
+|========================================
+
+Dependencies
+------------
+
+This extension is written against the SPIR-V Specification,
+Version 1.2 Revision 1.
+
+This extension requires SPIR-V 1.0.
+
+This extension interacts with SPV_EXT_possible_other_extension.
+
+Overview
+--------
+
+Describe extensions
+
+Extension Name
+--------------
+
+To use this extension within a SPIR-V module, the following
+*OpExtension* must be present in the module:
+
+----
+OpExtension "SPV_TYPE_extension_name"
+----
+
+New Capabilities
+----------------
+
+This extension introduces a new capability:
+
+----
+PossibleNewCapability
+----
+
+New Decorations
+---------------
+
+None.
+
+New Builtins
+------------
+
+None.
+
+New Instructions
+----------------
+
+None.
+
+Token Number Assignments
+------------------------
+
+[width="40%"]
+[cols="70%,30%"]
+[grid="rows"]
+|====
+|PossibleNewCapability | 9999
+|====
+
+Validation Rules
+----------------
+
+An OpExtension must be added to the SPIR-V for validation layers to check
+legal use of this extension:
+
+----
+OpExtension "SPV_TYPE_extension_name"
+----
+
+Issues
+------
+
+. What is the answer to life?
++
+--
+*RESOLVED*: 42.
+--
+
+Revision History
+----------------
+
+[cols="5,15,15,70"]
+[grid="rows"]
+[options="header"]
+|========================================
+|Rev|Date|Author|Changes
+|1 |2000-12-31 |Your Name| Initial draft.
+|========================================
