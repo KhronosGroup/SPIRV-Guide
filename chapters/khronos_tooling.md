@@ -10,7 +10,7 @@ This the Khronos Group way of providing a nice to use header file to interface w
 
 A quick [example](https://github.com/KhronosGroup/SPIRV-Headers/tree/master/example) to show how easy it is to use the headers
 
-```
+```cpp
 #include <spirv/unified1/spirv.hpp>
 
 const spv::Op kNop = spv::OpNop;
