@@ -18,6 +18,7 @@ The SPIR-V Guide is designed to help developers get up and going with the world 
 
 ## Extending SPIR-V
 - [Extensions overview](./chapters/extension_overview.md)
+    - [Extensions by version](./chapters/extension_by_version.md)
 - [Creating an extension](./chapters/creating_extension.md)
 - [Extended instruction sets](./chapters/extended_instruction_sets.md)
 - [Non-Semantic Instructions](./chapters/nonsemantic.md)
