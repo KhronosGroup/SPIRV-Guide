@@ -117,26 +117,30 @@ For example, there is a list of `BuiltIn` enums, and its `PointSize` entry is:
   },
 ```
 
-Enum entries within a list should be ordered by their value. The spec generator writes table entries in the same order as JSON file order.
+Entries should be ordered by their enumerant value to make it easier to merge multiple versions together (from Khronos, public, and multiple PRs).
 
 
-An enum entry can also have attributes to describe when the feature exists:
+An enum entry can also have attributes to describe when the feature is available:
 
 - The `version` attribute corresponds to the
   "[missing before](https://www.khronos.org/registry/spir-v/specs/unified1/SPIRV.html#Unified)"
   annotation in the SPIR-V specification.
-  If present, the `version` attribute indicates the first SPIR-V version in which the feature exists
+  The `version` attribute indicates the first SPIR-V version in which the feature exists
   as part of the core specification, without the need to use an `OpExtension` instruction.
+  A feature introduced by an extension should always set the `version` attribute to `"None"`.
 - The `extension` attribute, if present, indicates the name of the extension to use
   with the `OpExtension` instruction when the feature is not yet part of the core SPIR-V specification.
-  The extension attribute takes the form of a list, in case a feature can be exposed through multiple
+  The `extension` attribute is a list of strings, in case a feature can be exposed through multiple
   extensions.
+- If an enum token is only usable when the SPIR-V module declares a capability, then that capability
+  must be listed in the `capabilities` attribute for that enum.
+  The `capabiliites` attribute is a list of strings, in case several capabilities can enable a feature.
 
 See [2.22 Unified Specification](https://www.khronos.org/registry/spir-v/specs/unified1/SPIRV.html#Unified)
 in the SPIR-V specification for more information.
 
-As a design principle, use the `extension` attribute on the capabilities introduced by the extension.
-Other tokens introduced by the extension are in turn guarded by the corresponding capability.
+A common pattern is to use the `version` and `extension` attributes on the capabilities introduced by the extension.
+Other tokens introduced by the extension can declare their dependence on one or more of those new capabilities.
 
 For example, this is the entry for the `ShaderViewportIndexLayerEXT` capability:
 
