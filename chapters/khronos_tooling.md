@@ -25,3 +25,9 @@ All these tools can be built as a standalone binary which is just a small wrappe
 > Example: The reference GLSL compiler, [glslang](https://github.com/KhronosGroup/glslang), depends on `libSPIRV-Tools` to provide an option to optimize the out
 
 The main goal behind this repo is to provide a single location for very common tools to prevent people from having to re-write their own. The end user can use these tools either by themselves or incorporate them with their tools. The repo is also Apache License 2.0 and always open for contributions.
+
+## SPIR-V Visualizer
+
+The [SPIRV-Visualizer](https://github.com/KhronosGroup/SPIRV-Visualizer) is a client side only Javascript tool to visualize a SPIR-V Module binary. [Live link](https://www.khronos.org/spir/visualizer/)
+
+![khronos_tooling_visualizer.png](../images/khronos_tooling_visualizer.png)
