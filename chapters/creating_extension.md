@@ -134,7 +134,7 @@ An enum entry can also have attributes to describe when the feature is available
   extensions.
 - If an enum token is only usable when the SPIR-V module declares a capability, then that capability
   must be listed in the `capabilities` attribute for that enum.
-  The `capabiliites` attribute is a list of strings, in case several capabilities can enable a feature.
+  The `capabilities` attribute is a list of strings, in case several capabilities can enable a feature.
 
 See [2.22 Unified Specification](https://www.khronos.org/registry/spir-v/specs/unified1/SPIRV.html#Unified)
 in the SPIR-V specification for more information.
