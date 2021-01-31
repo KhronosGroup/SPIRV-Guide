@@ -1,0 +1,14 @@
+#version 450
+
+layout(std430, set = 0, binding = 0) buffer ssbo {
+    float a;
+    vec3 b;
+    mat3 c;
+    float d[4];
+    float e[];
+};
+
+void main()
+{
+    e[5] = a + b.y + c[1][2] + d[3];
+}

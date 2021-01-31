@@ -1,0 +1,20 @@
+#version 450
+#extension GL_EXT_buffer_reference : require
+
+// forward declaration
+layout(buffer_reference) buffer blockType;
+
+layout(buffer_reference) buffer blockType {
+    int x;
+    blockType next;
+};
+
+layout(set = 0, binding = 0) buffer rootBlock {
+    int result;
+    blockType root;
+};
+
+void main() {
+    // Example of stepping through a linked list
+    result = root.next.next.next.x;
+}

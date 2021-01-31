@@ -1,0 +1,70 @@
+; SPIR-V
+; Version: 1.5
+; Generator: Khronos Glslang Reference Front End; 10
+; Bound: 38
+; Schema: 0
+               OpCapability Shader
+          %1 = OpExtInstImport "GLSL.std.450"
+               OpMemoryModel Logical GLSL450
+               OpEntryPoint GLCompute %main "main" %_
+               OpExecutionMode %main LocalSize 1 1 1
+               OpSource GLSL 450
+               OpName %main "main"
+               OpName %ssbo "ssbo"
+               OpMemberName %ssbo 0 "a"
+               OpMemberName %ssbo 1 "b"
+               OpMemberName %ssbo 2 "c"
+               OpMemberName %ssbo 3 "d"
+               OpMemberName %ssbo 4 "e"
+               OpName %_ ""
+               OpDecorate %_arr_float_uint_4 ArrayStride 4
+               OpDecorate %_runtimearr_float ArrayStride 4
+               OpMemberDecorate %ssbo 0 Offset 0
+               OpMemberDecorate %ssbo 1 Offset 16
+               OpMemberDecorate %ssbo 2 ColMajor
+               OpMemberDecorate %ssbo 2 Offset 32
+               OpMemberDecorate %ssbo 2 MatrixStride 16
+               OpMemberDecorate %ssbo 3 Offset 80
+               OpMemberDecorate %ssbo 4 Offset 96
+               OpDecorate %ssbo Block
+               OpDecorate %_ DescriptorSet 0
+               OpDecorate %_ Binding 0
+       %void = OpTypeVoid
+          %3 = OpTypeFunction %void
+      %float = OpTypeFloat 32
+    %v3float = OpTypeVector %float 3
+%mat3v3float = OpTypeMatrix %v3float 3
+       %uint = OpTypeInt 32 0
+     %uint_4 = OpConstant %uint 4
+%_arr_float_uint_4 = OpTypeArray %float %uint_4
+%_runtimearr_float = OpTypeRuntimeArray %float
+       %ssbo = OpTypeStruct %float %v3float %mat3v3float %_arr_float_uint_4 %_runtimearr_float
+%_ptr_StorageBuffer_ssbo = OpTypePointer StorageBuffer %ssbo
+          %_ = OpVariable %_ptr_StorageBuffer_ssbo StorageBuffer
+        %int = OpTypeInt 32 1
+      %int_4 = OpConstant %int 4
+      %int_5 = OpConstant %int 5
+      %int_0 = OpConstant %int 0
+%_ptr_StorageBuffer_float = OpTypePointer StorageBuffer %float
+      %int_1 = OpConstant %int 1
+     %uint_1 = OpConstant %uint 1
+      %int_2 = OpConstant %int 2
+     %uint_2 = OpConstant %uint 2
+      %int_3 = OpConstant %int 3
+       %main = OpFunction %void None %3
+          %5 = OpLabel
+         %21 = OpAccessChain %_ptr_StorageBuffer_float %_ %int_0
+         %22 = OpLoad %float %21
+         %25 = OpAccessChain %_ptr_StorageBuffer_float %_ %int_1 %uint_1
+         %26 = OpLoad %float %25
+         %27 = OpFAdd %float %22 %26
+         %30 = OpAccessChain %_ptr_StorageBuffer_float %_ %int_2 %int_1 %uint_2
+         %31 = OpLoad %float %30
+         %32 = OpFAdd %float %27 %31
+         %34 = OpAccessChain %_ptr_StorageBuffer_float %_ %int_3 %int_3
+         %35 = OpLoad %float %34
+         %36 = OpFAdd %float %32 %35
+         %37 = OpAccessChain %_ptr_StorageBuffer_float %_ %int_4 %int_5
+               OpStore %37 %36
+               OpReturn
+               OpFunctionEnd

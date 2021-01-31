@@ -16,6 +16,9 @@ The SPIR-V Guide is designed to help developers get up and going with the world 
 - [Khronos provided tooling](./chapters/khronos_tooling.md)
 - [Parsing instructions](./chapters/parsing_instructions.md)
 
+## Understanding SPIR-V
+- [Access Chains](./chapters/access_chains.md)
+
 ## Extending SPIR-V
 - [Extensions overview](./chapters/extension_overview.md)
     - [Extensions by version](./chapters/extension_by_version.md)
