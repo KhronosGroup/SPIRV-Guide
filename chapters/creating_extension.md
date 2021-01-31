@@ -173,4 +173,4 @@ that capability is enabled by the extension.
 Adding a new instruction is more involved because you need to provide a grammar rule for the operands, and each operand must be assigned the right
 operand kind. The rule can be subtle if there are optional, optionally repeating, or optionally repeating pairs of operands. For example, the `OpSwitch` rule is tricky.
 
-In particular, always use `IdResult` for a result Id operand, and `IdResultType` for a type Id operand. Normal Id operands are just `Id`.
+In particular, always use `IdResult` for a `Result <id>`, and `IdResultType` for a `Type <id>`. The `<id>` operands are just `Id`.
