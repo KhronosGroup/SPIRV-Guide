@@ -128,7 +128,7 @@ An enum entry can also have attributes to describe when the feature is available
   The `version` attribute indicates the first SPIR-V version in which the feature exists
   as part of the core specification, without the need to use an `OpExtension` instruction.
   A feature introduced by an extension should always set the `version` attribute to `"None"`.
-- The `extension` attribute, if present, indicates the name of the extension to use
+- The `extension` attribute, if present, indicates the name of an extension to use
   with the `OpExtension` instruction when the feature is not yet part of the core SPIR-V specification.
   The `extension` attribute is a list of strings, in case a feature can be exposed through multiple
   extensions.
