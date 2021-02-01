@@ -1,0 +1,60 @@
+; SPIR-V
+; Version: 1.5
+; Generator: Khronos Glslang Reference Front End; 10
+; Bound: 29
+; Schema: 0
+               OpCapability Shader
+               OpCapability PhysicalStorageBufferAddresses
+          %1 = OpExtInstImport "GLSL.std.450"
+               OpMemoryModel PhysicalStorageBuffer64 GLSL450
+               OpEntryPoint GLCompute %main "main" %_
+               OpExecutionMode %main LocalSize 1 1 1
+               OpSource GLSL 450
+               OpSourceExtension "GL_EXT_buffer_reference"
+               OpName %main "main"
+               OpName %rootBlock "rootBlock"
+               OpMemberName %rootBlock 0 "result"
+               OpMemberName %rootBlock 1 "root"
+               OpName %blockType "blockType"
+               OpMemberName %blockType 0 "x"
+               OpMemberName %blockType 1 "next"
+               OpName %_ ""
+               OpMemberDecorate %rootBlock 0 Offset 0
+               OpMemberDecorate %rootBlock 1 Offset 8
+               OpDecorate %rootBlock Block
+               OpMemberDecorate %blockType 0 Offset 0
+               OpMemberDecorate %blockType 1 Offset 8
+               OpDecorate %blockType Block
+               OpDecorate %_ DescriptorSet 0
+               OpDecorate %_ Binding 0
+       %void = OpTypeVoid
+          %3 = OpTypeFunction %void
+        %int = OpTypeInt 32 1
+               OpTypeForwardPointer %_ptr_PhysicalStorageBuffer_blockType PhysicalStorageBuffer
+  %rootBlock = OpTypeStruct %int %_ptr_PhysicalStorageBuffer_blockType
+  %blockType = OpTypeStruct %int %_ptr_PhysicalStorageBuffer_blockType
+%_ptr_PhysicalStorageBuffer_blockType = OpTypePointer PhysicalStorageBuffer %blockType
+%_ptr_StorageBuffer_rootBlock = OpTypePointer StorageBuffer %rootBlock
+          %_ = OpVariable %_ptr_StorageBuffer_rootBlock StorageBuffer
+      %int_0 = OpConstant %int 0
+      %int_1 = OpConstant %int 1
+%_ptr_StorageBuffer__ptr_PhysicalStorageBuffer_blockType = OpTypePointer StorageBuffer %_ptr_PhysicalStorageBuffer_blockType
+%_ptr_PhysicalStorageBuffer__ptr_PhysicalStorageBuffer_blockType = OpTypePointer PhysicalStorageBuffer %_ptr_PhysicalStorageBuffer_blockType
+%_ptr_PhysicalStorageBuffer_int = OpTypePointer PhysicalStorageBuffer %int
+%_ptr_StorageBuffer_int = OpTypePointer StorageBuffer %int
+       %main = OpFunction %void None %3
+          %5 = OpLabel
+         %15 = OpAccessChain %_ptr_StorageBuffer__ptr_PhysicalStorageBuffer_blockType %_ %int_1
+         %16 = OpLoad %_ptr_PhysicalStorageBuffer_blockType %15
+         %18 = OpAccessChain %_ptr_PhysicalStorageBuffer__ptr_PhysicalStorageBuffer_blockType %16 %int_1
+         %19 = OpLoad %_ptr_PhysicalStorageBuffer_blockType %18 Aligned 8
+         %20 = OpAccessChain %_ptr_PhysicalStorageBuffer__ptr_PhysicalStorageBuffer_blockType %19 %int_1
+         %21 = OpLoad %_ptr_PhysicalStorageBuffer_blockType %20 Aligned 8
+         %22 = OpAccessChain %_ptr_PhysicalStorageBuffer__ptr_PhysicalStorageBuffer_blockType %21 %int_1
+         %23 = OpLoad %_ptr_PhysicalStorageBuffer_blockType %22 Aligned 8
+         %25 = OpAccessChain %_ptr_PhysicalStorageBuffer_int %23 %int_0
+         %26 = OpLoad %int %25 Aligned 16
+         %28 = OpAccessChain %_ptr_StorageBuffer_int %_ %int_0
+               OpStore %28 %26
+               OpReturn
+               OpFunctionEnd
