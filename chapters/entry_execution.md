@@ -89,7 +89,7 @@ which gets tranlated to roughly the following in SPIR-V
        OpEntryPoint Vertex %v_main "vertex_main" %vert_out
        OpEntryPoint Fragment %f_main "fragment_main"
        OpExecutionMode %v_main RoundingModeRTE 32
-       OpExecutionMode %fragment_main RoundingModeRTZ 32
+       OpExecutionMode %f_main RoundingModeRTZ 32
        // ...
 %foo = OpFunction %float None %1
 %bar = OpFunctionParameter %ptr_float
