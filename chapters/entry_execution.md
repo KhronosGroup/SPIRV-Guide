@@ -88,7 +88,7 @@ which gets tranlated to roughly the following in SPIR-V
 ```swift
        OpEntryPoint Vertex %v_main "vertex_main" %vert_out
        OpEntryPoint Fragment %f_main "fragment_main"
-       OpExecutionMode %vertex_main RoundingModeRTE 32
+       OpExecutionMode %v_main RoundingModeRTE 32
        OpExecutionMode %fragment_main RoundingModeRTZ 32
        // ...
 %foo = OpFunction %float None %1
