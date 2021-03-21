@@ -1,0 +1,10 @@
+#version 450
+shared int x;
+void main() {
+    for (int i = 0; i < 4; i++) {
+        if (i == 3) {
+            x--;
+        }
+        x++;
+    }
+}
