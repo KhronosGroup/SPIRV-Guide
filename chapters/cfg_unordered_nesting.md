@@ -26,3 +26,13 @@ Using [glslang](https://github.com/KhronosGroup/glslang) it produces structured 
 ![cfg_unordered_nesting_simple_diff.png](../images/cfg_unordered_nesting_simple_diff.png)
 
 It is important to note that the `%22 = OpLabel` selection construct block could **not** be moved above in the function because the selection header block (`%11 = OpLabel`) must dominate it.
+
+## Fixing with SPIRV-Tools
+
+SPIRV-Tools has a function that goes and [computes the structured order](https://github.com/KhronosGroup/SPIRV-Tools/blob/d20c9c2cf3fb74fb6cf3738aceaa2cd50cc33633/source/opt/cfg.h#L66) for various passes in `spirv-opt`. There is not a dedicated pass to just restructuring, instead it is just built in to some passes.
+
+The simplest way to see this in action is running:
+
+```bash
+spirv-opt --merge-return chapters/examples/cfg_unordered_nesting/simple_1.spv -o simple_1_fixed.spv
+```
