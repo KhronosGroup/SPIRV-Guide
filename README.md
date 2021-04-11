@@ -19,6 +19,7 @@ The SPIR-V Guide is designed to help developers get up and going with the world 
 ## Understanding SPIR-V
 - [Access Chains](./chapters/access_chains.md)
 - [Entry Point, Execution Model, and Execution Mode](./chapters/entry_execution.md)
+- [CFG Unordered Nesting](./chapters/cfg_unordered_nesting.md)
 
 ## Extending SPIR-V
 - [Extensions overview](./chapters/extension_overview.md)
