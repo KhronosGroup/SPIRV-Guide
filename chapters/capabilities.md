@@ -4,4 +4,4 @@ Because SPIR-V can be consumed by multiple client APIs, which have different req
 
 > Example: Something such as [Builtin::PrimitiveId](https://www.khronos.org/registry/spir-v/specs/unified1/SPIRV.html#_a_id_builtin_a_builtin) will not be found in a compute API such as OpenCL, therefore the capabilities prevent an OpenCL targeted SPIR-V module from being valid if the `PrimitiveId` builtin is used.
 
-It is up to the client API to properly expose any capabilities that are supported ([Vulkan example](https://github.com/KhronosGroup/Vulkan-Guide/blob/master/chapters/extensions/shader_features.md#example-workflow)).
+It is up to the client API to properly expose any capabilities that are supported ([Vulkan example](https://github.com/KhronosGroup/Vulkan-Guide/blob/master/chapters/spirv_extensions.adoc)).
