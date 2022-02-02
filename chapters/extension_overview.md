@@ -13,7 +13,7 @@ The rest of the extensions are "multi-vendor" and are labeled as either `SPV_EXT
 
 ## Extension Workflow
 
-Extensions are mainly added to correspond to a client API's usage ([Vulkan workflow example](https://github.com/KhronosGroup/Vulkan-Guide/blob/master/chapters/extensions/shader_features.md#example-workflow)).
+Extensions are mainly added to correspond to a client API's usage ([Vulkan workflow example](https://github.com/KhronosGroup/Vulkan-Guide/blob/master/chapters/spirv_extensions.adoc)).
 
 Using `SPV_KHR_multiview` as an example with the following GLSL targeting SPIR-V 1.0
 ```
