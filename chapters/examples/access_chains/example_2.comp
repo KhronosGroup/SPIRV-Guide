@@ -1,0 +1,15 @@
+#version 450
+
+struct my_struct {
+  float a[4][4];
+};
+
+layout (set = 0, binding = 0) buffer SSBO {
+	float x;
+    my_struct y[4];
+} ssbo[4];
+
+void main() {
+  float function_var[4][4][4][4][4];
+  function_var[2][2][2][2][2] = ssbo[2].y[2].a[2][2];
+}
