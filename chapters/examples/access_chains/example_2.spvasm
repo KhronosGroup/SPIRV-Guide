@@ -1,0 +1,62 @@
+; SPIR-V
+; Version: 1.5
+; Generator: Khronos Glslang Reference Front End; 10
+; Bound: 33
+; Schema: 0
+               OpCapability Shader
+          %1 = OpExtInstImport "GLSL.std.450"
+               OpMemoryModel Logical GLSL450
+               OpEntryPoint GLCompute %4 "main" %25
+               OpExecutionMode %4 LocalSize 1 1 1
+               OpSource GLSL 450
+               OpName %4 "main"
+               OpName %15 "function_var"
+               OpName %20 "my_struct"
+               OpMemberName %20 0 "a"
+               OpName %22 "SSBO"
+               OpMemberName %22 0 "x"
+               OpMemberName %22 1 "y"
+               OpName %25 "ssbo"
+               OpDecorate %18 ArrayStride 4
+               OpDecorate %19 ArrayStride 16
+               OpMemberDecorate %20 0 Offset 0
+               OpDecorate %21 ArrayStride 64
+               OpMemberDecorate %22 0 Offset 0
+               OpMemberDecorate %22 1 Offset 4
+               OpDecorate %22 Block
+               OpDecorate %25 DescriptorSet 0
+               OpDecorate %25 Binding 0
+          %2 = OpTypeVoid
+          %3 = OpTypeFunction %2
+          %6 = OpTypeFloat 32
+          %7 = OpTypeInt 32 0
+          %8 = OpConstant %7 4
+          %9 = OpTypeArray %6 %8
+         %10 = OpTypeArray %9 %8
+         %11 = OpTypeArray %10 %8
+         %12 = OpTypeArray %11 %8
+         %13 = OpTypeArray %12 %8
+         %14 = OpTypePointer Function %13
+         %16 = OpTypeInt 32 1
+         %17 = OpConstant %16 2
+         %18 = OpTypeArray %6 %8
+         %19 = OpTypeArray %18 %8
+         %20 = OpTypeStruct %19
+         %21 = OpTypeArray %20 %8
+         %22 = OpTypeStruct %6 %21
+         %23 = OpTypeArray %22 %8
+         %24 = OpTypePointer StorageBuffer %23
+         %25 = OpVariable %24 StorageBuffer
+         %26 = OpConstant %16 1
+         %27 = OpConstant %16 0
+         %28 = OpTypePointer StorageBuffer %6
+         %31 = OpTypePointer Function %6
+          %4 = OpFunction %2 None %3
+          %5 = OpLabel
+         %15 = OpVariable %14 Function
+         %29 = OpAccessChain %28 %25 %17 %26 %17 %27 %17 %17
+         %30 = OpLoad %6 %29
+         %32 = OpAccessChain %31 %15 %17 %17 %17 %17 %17
+               OpStore %32 %30
+               OpReturn
+               OpFunctionEnd
