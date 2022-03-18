@@ -4,9 +4,11 @@ The chapter aims to give a more in detailed look of how `OpAccessChain` is used 
 
 Examples:
 
-  * [Indexing into a struct](#example-0---indexing-into-a-struct)
-  * [Accessing through physical pointers](#example-1---accessing-through-physical-pointers)
-  * [Arrays](#example-2---arrays)
+  * [Indexing into a struct](#example---indexing-into-a-struct)
+  * [In bound access](#example---in-bound-access)
+  * [Accessing through physical pointers](#example---accessing-through-physical-pointers)
+  * [Arrays](#example---arrays)
+
 
 From reading the [spec](https://www.khronos.org/registry/spir-v/specs/unified1/SPIRV.html#OpAccessChain), simply put:
 
@@ -16,9 +18,9 @@ The access chain takes a `Base` to a variable and then uses the `Indexes` to get
 
 > The following example uses GLSL and glslang as a more visual way to examine a valid example
 
-## Example 0 - Indexing into a struct
+## Example - Indexing into a struct
 
-[example_0 GLSL](examples/access_chains/example_0.comp) | [example_0 SPIR-V binary](examples/access_chains/example_0.spv) | [example_0 SPIR-V disassembled](examples/access_chains/example_0.spvasm)
+[example_struct GLSL](examples/access_chains/example_struct.comp) | [example_struct SPIR-V binary](examples/access_chains/example_struct.spv) | [example_struct SPIR-V disassembled](examples/access_chains/example_struct.spvasm)
 
 ```glsl
 #version 450
@@ -79,11 +81,43 @@ Since all `Indexes` must be scalar integer type and the values are known at comp
 
 The important to notice is that access chains are not dependent on the `OpMemberDecorate Offset` value and instead use the structure's hierarchy indices.
 
-## Example 1 - Accessing through physical pointers
+## Example - In bound access
+
+For structs, the `indexes` in the `OpAccessChain` must be a constant value, but for other objects (vectors, array, matrix, etc) it can be a logical pointer which means the access could be out of the bounds of the base object.
+
+For example, the following indexing into the vector is not known until runtime:
+
+```glsl
+#version 450
+layout (binding = 0) buffer ssbo {
+  vec4 a;
+};
+
+shared int b;
+
+void main() {
+  float x = a[b];
+}
+```
+
+```swift
+%17 = OpLoad %int %b
+%19 = OpAccessChain %ptr %ssbo_var %int_0 %17
+```
+
+but an application can make use of the `OpInBoundsAccessChain` to ensure that `indexes` will always be in bounds of the base object
+
+```swift
+%17 = OpLoad %int %b
+// guarantees %17 will resolve within the vec4
+%19 = OpInBoundsAccessChain %ptr %ssbo_var %int_0 %17
+```
+
+## Example - Accessing through physical pointers
 
 > Note: The following SPIR-V is only valid with a proper addressing model that supports physical pointers (`Physical32`, `Physical64`, `PhysicalStorageBuffer64`, etc)
 
-[example_1 GLSL](examples/access_chains/example_1.comp) | [example_1 SPIR-V binary](examples/access_chains/example_1.spv) | [example_1 SPIR-V disassembled](examples/access_chains/example_1.spvasm)
+[example_physical GLSL](examples/access_chains/example_physical.comp) | [example_physical SPIR-V binary](examples/access_chains/example_physical.spv) | [example_physical SPIR-V disassembled](examples/access_chains/example_physical.spvasm)
 
 ```glsl
 #version 450
@@ -129,9 +163,10 @@ The code `root.next.next.next.x` produces 5 `OpLoad` and `OpAccessChain` to get 
 %x     = OpLoad %6 %25                 // loads root.next.next.next.x
 ```
 
-## Example 2 - Arrays
 
-[example_2 GLSL](examples/access_chains/example_2.comp) | [example_2 SPIR-V binary](examples/access_chains/example_2.spv) | [example_2 SPIR-V disassembled](examples/access_chains/example_2.spvasm)
+## Example - Arrays
+
+[example_array GLSL](examples/access_chains/example_array.comp) | [example_array SPIR-V binary](examples/access_chains/example_array.spv) | [example_array SPIR-V disassembled](examples/access_chains/example_array.spvasm)
 
 ```glsl
 #version 450
