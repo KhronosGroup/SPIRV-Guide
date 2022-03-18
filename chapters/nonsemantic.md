@@ -12,7 +12,7 @@ This was added so tools such as the Vulkan Validation Layers, RenderDoc, etc cou
 
 Taking a GLSL shader of
 
-```
+```glsl
 #version 450
 #extension GL_EXT_debug_printf : enable
 
@@ -24,7 +24,7 @@ void main() {
 
 the output SPIR-V Assembly roughly looks like
 
-```
+```swift
        Extension  "SPV_KHR_non_semantic_info"
 13:    ExtInstImport  "NonSemantic.DebugPrintf"
 
@@ -44,6 +44,17 @@ Breaking this down:
     - Set the `Instruction` to the non-semantic extension specific instruction being added
         - For `DebugPrintf` it is listed as being instruction `1` in the [extension spec](http://htmlpreview.github.io/?https://github.com/KhronosGroup/SPIRV-Registry/blob/master/extensions/KHR/SPV_KHR_non_semantic_info.html)
         - ![nonsemantic_debugprintf.png](../images/nonsemantic_debugprintf.png)
+
+### Revisions
+
+Some non-semantic extensions have multiple revisions. Some extensions will append the version on the end of the string, for example:
+
+```swift
+OpExtInstImport  "NonSemantic.ClspvReflection.1"  // revision 1
+OpExtInstImport  "NonSemantic.ClspvReflection.2"  // revision 2
+```
+
+The details of versioning and the string to detect can be found per extension in the [SPIRV-Registry](https://github.com/KhronosGroup/SPIRV-Registry/tree/main/nonsemantic)
 
 ## Adding a new non-semantic extension
 
