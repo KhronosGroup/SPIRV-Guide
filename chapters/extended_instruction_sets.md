@@ -20,31 +20,31 @@ There are three things needed when referring to an extended instruction set
 
 Looking at a simple GLSL shader which uses `sin()`
 
-```
+```glsl
 #version 450
 
 layout(location = 0) in float inputValue;
 
 void main() {
-    float xpos = sin(inputValue);
-    gl_Position = vec4(xpos, 1.0, 1.0, 1.0);
+    float pos = sin(inputValue);
+    gl_Position = vec4(pos, 1.0, 1.0, 1.0);
 }
 ```
 
 produces the following SPIR-V disassembly
 
-```
- 1:           ExtInstImport  "GLSL.std.450"
+```swift
+    %1 = OpExtInstImport "GLSL.std.450"
 
- 6:           TypeFloat 32
- 9:           TypePointer Input 6(float)
-10:  9(ptr)   Variable Input
+%float = OpTypeFloat 32
+  %ptr = OpTypePointer Input %float
+  %var = OpVariable %_ptr_Input_float Input
 
- 8:  7(ptr)   Variable Function
-11:  6(float) Load 10(inputValue)
-12:  6(float) ExtInst 1(GLSL.std.450) 13(Sin) 11
-              Store 8(xpos) 12
-22:  6(float) Load 8(xpos)
+  %pos = OpVariable %_ptr_Function_float Function
+   %11 = OpLoad %float %var
+   %12 = OpExtInst %float %1 Sin %11
+         OpStore %pos %12
+   %22 = OpLoad %float %pos
 ```
 
 Breaking this down:

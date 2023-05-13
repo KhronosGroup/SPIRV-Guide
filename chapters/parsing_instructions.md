@@ -52,10 +52,10 @@ void parseModule(uint32_t* pCode, uint32_t codeSize) {
 
 Taking a look at a few lines of disassembled SPIR-V
 
-```
-2:   TypeVoid
-3:   TypeFunction 2
-6:   TypeInt 32 0
+```swift
+%2 = OpTypeVoid
+%3 = OpTypeFunction %2
+%6 = TypeInt 32 0
 ```
 
 The assembled binary representation is as followed
@@ -72,13 +72,15 @@ Using `OpTypeInt` as an example to show the mapping more clearly
 
 Here is another example
 
+```swift
+%44 = OpIAdd %6 %43 %40
+%45 = OpAccessChain %41 %38 %19 %39
+      OpStore %45 %44
 ```
-44:      6(int)     IAdd 43 40
-45:     41(ptr)     AccessChain 38 19 39
-                    Store 45 44
 
-// in binary form
+in binary form:
 
+```
 0x00050080 0x00000006 0x0000002c 0x0000002b 0x00000028
 0x00060041 0x00000029 0x0000002d 0x00000026 0x00000013 0x00000027
 0x0003003e 0x0000002d 0x0000002c
