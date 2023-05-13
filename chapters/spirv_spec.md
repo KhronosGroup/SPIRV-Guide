@@ -29,3 +29,9 @@ The spec is currently broken down into 4 sections
         - Lists the information for each instruction found in SPIR-V
 4. [Appendix](https://www.khronos.org/registry/spir-v/specs/unified1/SPIRV.html#_appendix_a_changes)
     - Goes over changes made to unified spec over time
+
+## SPIR-V Grammar File
+
+The part of the SPIR-V spec and header is generated from the [spirv.core.grammar.json](https://github.com/KhronosGroup/SPIRV-Headers/blob/main/include/spirv/unified1/spirv.core.grammar.json) file.
+
+This contains information about every instruction and operand in SPIR-V
