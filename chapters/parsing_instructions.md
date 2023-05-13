@@ -29,13 +29,25 @@ After parsing the header, the rest of the SPIR-V Module is just a stream of inst
 Here is some basic code to help visualize the logic needed for parsing each instruction
 
 ```cpp
-// uint32_t module[];
-uint32_t x = GetCurrentOffsetInModule();
-uint32_t instruction = module[x];
+#include <spirv/unified1/spirv.hpp>
 
-uint32_t length          = instruction >> 16;
-uint32_t opcode          = instruction & 0x0ffffu;
-uint32_t nextInstruction = module[x + length];
+void parseModule(uint32_t* pCode, uint32_t codeSize) {
+    uint32_t offset = 5; // first 5 words of module are the headers
+
+    while (offset < codeSize) {
+        uint32_t instruction = pCode[offset];
+
+        uint32_t length = instruction >> 16;
+        uint32_t opcode = instruction & 0x0ffffu;
+
+        offset += length;
+
+        switch (opcode) {
+            case spv::OpTypeInt:
+                // ...
+        }
+    }
+}
 ```
 
 Taking a look at a few lines of disassembled SPIR-V
