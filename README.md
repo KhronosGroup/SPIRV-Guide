@@ -18,6 +18,7 @@ The SPIR-V Guide is designed to help developers get up and going with the world 
 
 ## Understanding SPIR-V
 - [Entry Point, Execution Model, and Execution Mode](./chapters/entry_execution.md)
+- [Types](./chapters/types.md)
 - [Access Chains](./chapters/access_chains.md)
 
 ## Control Flow
