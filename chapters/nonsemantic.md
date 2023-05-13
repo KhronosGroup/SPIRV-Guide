@@ -2,13 +2,13 @@
 
 > Non-Semantic can be looked at as just a special case of an [extended instruction set](./extended_instruction_sets.md)
 
-The addition of the [SPV_KHR_non_semantic_info](http://htmlpreview.github.io/?https://github.com/KhronosGroup/SPIRV-Registry/blob/master/extensions/KHR/SPV_KHR_non_semantic_info.html) extension adds the ability to declare extended instruction sets that have no semantic impact and can be safely removed from a module. This uses the [OpExtInstImport](https://www.khronos.org/registry/spir-v/specs/unified1/SPIRV.html#OpExtInstImport) and [OpExtInst](https://www.khronos.org/registry/spir-v/specs/unified1/SPIRV.html#OpExtInst) instructions.
+The addition of the [SPV_KHR_non_semantic_info](http://htmlpreview.github.io/?https://github.com/KhronosGroup/SPIRV-Registry/blob/main/extensions/KHR/SPV_KHR_non_semantic_info.html) extension adds the ability to declare extended instruction sets that have no semantic impact and can be safely removed from a module. This uses the [OpExtInstImport](https://registry.khronos.org/SPIR-V/specs/unified1/SPIRV.html#OpExtInstImport) and [OpExtInst](https://registry.khronos.org/SPIR-V/specs/unified1/SPIRV.html#OpExtInst) instructions.
 
 This was added so tools such as the Vulkan Validation Layers, RenderDoc, etc could inject SPIR-V instructions to aid in tooling without worrying about the implementation compiler crashing from an unknown instruction.
 
 ## Using non-semantic
 
-> The following will be using the [Debug Printf](https://vulkan.lunarg.com/doc/sdk/latest/windows/debug_printf.html) non-semantic [instruction](http://htmlpreview.github.io/?https://github.com/KhronosGroup/SPIRV-Registry/blob/master/nonsemantic/NonSemantic.DebugPrintf.html) as an example.
+> The following will be using the [Debug Printf](https://vulkan.lunarg.com/doc/sdk/latest/windows/debug_printf.html) non-semantic [instruction](http://htmlpreview.github.io/?https://github.com/KhronosGroup/SPIRV-Registry/blob/main/nonsemantic/NonSemantic.DebugPrintf.html) as an example.
 
 Taking a GLSL shader of
 
@@ -22,7 +22,7 @@ void main() {
 }
 ```
 
-the output SPIR-V Assembly roughly looks like
+the output SPIR-V disassembly roughly looks like
 
 ```swift
        Extension  "SPV_KHR_non_semantic_info"
@@ -42,7 +42,7 @@ Breaking this down:
 - Use `OpExtInst`
     - Set the `Set` field to the imported non-semantic extension
     - Set the `Instruction` to the non-semantic extension specific instruction being added
-        - For `DebugPrintf` it is listed as being instruction `1` in the [extension spec](http://htmlpreview.github.io/?https://github.com/KhronosGroup/SPIRV-Registry/blob/master/extensions/KHR/SPV_KHR_non_semantic_info.html)
+        - For `DebugPrintf` it is listed as being instruction `1` in the [extension spec](http://htmlpreview.github.io/?https://github.com/KhronosGroup/SPIRV-Registry/blob/main/extensions/KHR/SPV_KHR_non_semantic_info.html)
         - ![nonsemantic_debugprintf.png](../images/nonsemantic_debugprintf.png)
 
 ### Revisions
@@ -60,11 +60,11 @@ The details of versioning and the string to detect can be found per extension in
 
 > Set of instructions to get a non-semantic extension added
 
-- Add to the [SPIRV-Registry](https://github.com/KhronosGroup/SPIRV-Registry/tree/master/nonsemantic) repo
+- Add to the [SPIRV-Registry](https://github.com/KhronosGroup/SPIRV-Registry/tree/main/nonsemantic) repo
     - [Example PR](https://github.com/KhronosGroup/SPIRV-Registry/pull/61/files)
 - Add to the [SPIRV-Headers](https://github.com/KhronosGroup/SPIRV-Headers) repo
     - Add a grammar file at `include/spirv/unified1/extinst.nonsemantic.<INSERT_NAME>.grammar.json`
-    - Add line to bottom of the [generator script](https://github.com/KhronosGroup/SPIRV-Headers/blob/master/tools/buildHeaders/bin/makeExtinstHeaders.py)
+    - Add line to bottom of the [generator script](https://github.com/KhronosGroup/SPIRV-Headers/blob/main/tools/buildHeaders/bin/makeExtinstHeaders.py)
         - `mk_extinst('NonSemantic<INSERT_NAME>', 'extinst.nonsemantic.<INSERT_NAME>.grammar.json')`
     - Run script ([as described in the README](https://github.com/KhronosGroup/SPIRV-Headers#generating-c-headers-for-extended-instruction-sets)) to generate the C header file.
     - [Example PR](https://github.com/KhronosGroup/SPIRV-Headers/pull/145/files)

@@ -61,7 +61,7 @@ while `OpExecutionModeId` uses `<id>`
 OpExecutionModeId %main LocalSizeId %x %y %z
 ```
 
-This is noted in the [Execution Mode part of the spec](https://www.khronos.org/registry/spir-v/specs/unified1/SPIRV.html#Execution_Mode)
+This is noted in the [Execution Mode part of the spec](https://registry.khronos.org/SPIR-V/specs/unified1/SPIRV.html#Execution_Mode)
 
 ![entry_execution_mode_chart.png](../images/entry_execution_mode_chart.png)
 

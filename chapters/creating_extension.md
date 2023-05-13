@@ -43,7 +43,7 @@ Note that changes or additions to the list of enumerated tokens or instruction s
 
 ### Token registration
 
-All new token values must be drawn from ranges registered in the [SPIR-V XML Registry file](https://github.com/KhronosGroup/SPIRV-Headers/blob/master/include/spirv/spir-v.xml) before an extension can be considered complete.
+All new token values must be drawn from ranges registered in the [SPIR-V XML Registry file](https://github.com/KhronosGroup/SPIRV-Headers/blob/main/include/spirv/spir-v.xml) before an extension can be considered complete.
 
 ### Issues group
 
@@ -94,8 +94,8 @@ The core instruction grammar file is:
 
 - The source of truth for generating tables in the SPIR-V specification,
 - The source of truth for the language-specific header files,
-    - [spirv/unified1/spirv.h](https://github.com/KhronosGroup/SPIRV-Headers/blob/master/include/spirv/unified1/spirv.h), and
-- Published as [spirv.core.grammar.json](https://github.com/KhronosGroup/SPIRV-Headers/blob/master/include/spirv/unified1/spirv.core.grammar.json) in the SPIRV-Headers repo
+    - [spirv/unified1/spirv.h](https://github.com/KhronosGroup/SPIRV-Headers/blob/main/include/spirv/unified1/spirv.h), and
+- Published as [spirv.core.grammar.json](https://github.com/KhronosGroup/SPIRV-Headers/blob/main/include/spirv/unified1/spirv.core.grammar.json) in the SPIRV-Headers repo
 - The source of truth for the SPIRV-Tools assembler, binary parser, and disassembler. (The SPIRV-Tools find the grammar files in the SPIRV-Headers tree you've pulled into your workspace.)
 - Optional: Rebuild the headers by running the script ([as described in the README](https://github.com/KhronosGroup/SPIRV-Headers#generating-c-headers-for-extended-instruction-sets)) to generate the C header file.
     - Verify that the headers have the new tokens.
@@ -104,7 +104,7 @@ The core instruction grammar file is:
 
 ### What should I change in the grammar file?
 
-The syntax and semantics of the JSON file itself are described in [SPIR-V Machine-readable Grammar](https://www.khronos.org/registry/spir-v/specs/1.0/MachineReadableGrammar.html).
+The syntax and semantics of the JSON file itself are described in [SPIR-V Machine-readable Grammar](https://registry.khronos.org/SPIR-V/specs/1.0/MachineReadableGrammar.html).
 
 The main part of the file is a list of lists of enums. Each enum entry is a dictionary listing the name, numeric value, and optionally the list of capabilities that enable that enumerant.
 
@@ -123,7 +123,7 @@ Entries should be ordered by their enumerant value to make it easier to merge mu
 An enum entry can also have attributes to describe when the feature is available:
 
 - The `version` attribute corresponds to the
-  "[missing before](https://www.khronos.org/registry/spir-v/specs/unified1/SPIRV.html#Unified)"
+  "[missing before](https://registry.khronos.org/SPIR-V/specs/unified1/SPIRV.html#Unified)"
   annotation in the SPIR-V specification.
   The `version` attribute indicates the first SPIR-V version in which the feature exists
   as part of the core specification, without the need to use an `OpExtension` instruction.
@@ -136,7 +136,7 @@ An enum entry can also have attributes to describe when the feature is available
   must be listed in the `capabilities` attribute for that enum.
   The `capabilities` attribute is a list of strings, in case several capabilities can enable a feature.
 
-See [2.22 Unified Specification](https://www.khronos.org/registry/spir-v/specs/unified1/SPIRV.html#Unified)
+See [2.22 Unified Specification](https://registry.khronos.org/SPIR-V/specs/unified1/SPIRV.html#Unified)
 in the SPIR-V specification for more information.
 
 A common pattern is to use the `version` and `extension` attributes on the capabilities introduced by the extension.

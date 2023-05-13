@@ -17,11 +17,16 @@ The SPIR-V Guide is designed to help developers get up and going with the world 
 - [Parsing instructions](./chapters/parsing_instructions.md)
 
 ## Understanding SPIR-V
-- [Access Chains](./chapters/access_chains.md)
 - [Entry Point, Execution Model, and Execution Mode](./chapters/entry_execution.md)
+- [Types](./chapters/types.md)
+- [Access Chains](./chapters/access_chains.md)
+
+## Control Flow
+- [Functions and Blocks](./chapters/functions_blocks.md)
 - [CFG Unordered Nesting](./chapters/cfg_unordered_nesting.md)
-- Outside educational material
-    - [google/spirv-tutor](https://github.com/google/spirv-tutor)
+
+### Outside educational material
+- [google/spirv-tutor](https://github.com/google/spirv-tutor)
 
 ## Extending SPIR-V
 - [Extensions overview](./chapters/extension_overview.md)
