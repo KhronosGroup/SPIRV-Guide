@@ -1,6 +1,6 @@
 # Internals of SPIR-V
 
-A SPIR-V [module](https://www.khronos.org/registry/spir-v/specs/unified1/SPIRV.html#_module) is a single unit of SPIR-V, most commonly found in a `.spv` file. Because SPIR-V is used in binary form, developers tend to reference the disassembled form instead (sometimes referred to as SPIR-V disassembly).
+A SPIR-V [module](https://registry.khronos.org/SPIR-V/specs/unified1/SPIRV.html#_module) is a single unit of SPIR-V, most commonly found in a `.spv` file. Because SPIR-V is used in binary form, developers tend to reference the disassembled form instead (sometimes referred to as SPIR-V disassembly).
 
 Small example of SPIR-V disassembly
 
@@ -17,16 +17,16 @@ Small example of SPIR-V disassembly
      OpFunctionEnd
 ```
 
-The spec gives a [full example](https://www.khronos.org/registry/spir-v/specs/unified1/SPIRV.html#_example) of a simple GLSL shader to SPIR-V disassembly
+The spec gives a [full example](https://registry.khronos.org/SPIR-V/specs/unified1/SPIRV.html#_example) of a simple GLSL shader to SPIR-V disassembly
 
-A SPIR-V module is a single linear stream of [words](https://www.khronos.org/registry/spir-v/specs/unified1/SPIRV.html#Word). The full [physical layout](https://www.khronos.org/registry/spir-v/specs/unified1/SPIRV.html#PhysicalLayout) of the module is well described in the spec. Here is a visual diagram showing the layout.
+A SPIR-V module is a single linear stream of [words](https://registry.khronos.org/SPIR-V/specs/unified1/SPIRV.html#Word). The full [physical layout](https://registry.khronos.org/SPIR-V/specs/unified1/SPIRV.html#PhysicalLayout) of the module is well described in the spec. Here is a visual diagram showing the layout.
 
 ![spirv_internals_layout.png](../images/spirv_internals_layout.png)
 
 
 ## Reading SPIR-V Disassembly
 
-[SPIRV-Tools](https://github.com/KhronosGroup/SPIRV-Tools/blob/master/docs/syntax.md) has a great breakdown of the syntax found in SPIR-V disassembly.
+[SPIRV-Tools](https://github.com/KhronosGroup/SPIRV-Tools/blob/main/docs/syntax.md) has a great breakdown of the syntax found in SPIR-V disassembly.
 
 It is also very useful to use the spec when looking at SPIR-V disassembly.
 

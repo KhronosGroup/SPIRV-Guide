@@ -2,7 +2,7 @@
 
 > This chapter goes over tips for parsing a stream of SPIR-V instructions
 >
-> SPIR-V Tools has a reference parser found in [binary.cpp](https://github.com/KhronosGroup/SPIRV-Tools/blob/master/source/binary.cpp)
+> SPIR-V Tools has a reference parser found in [binary.cpp](https://github.com/KhronosGroup/SPIRV-Tools/blob/main/source/binary.cpp)
 
 Parsing of SPIR-V consists of 2 main components, the header and the instructions.
 
@@ -22,7 +22,7 @@ uint32_t schema    = spvFixWord(binary[SPV_INDEX_SCHEMA], endian);
 
 ## Instructions
 
-After parsing the header, the rest of the SPIR-V Module is just a stream of instructions. The SPIR-V Spec describes the [Instruction Physical Layout](https://www.khronos.org/registry/spir-v/specs/unified1/SPIRV.html#_a_id_physicallayout_a_physical_layout_of_a_spir_v_module_and_instruction) as:
+After parsing the header, the rest of the SPIR-V Module is just a stream of instructions. The SPIR-V Spec describes the [Instruction Physical Layout](https://registry.khronos.org/SPIR-V/specs/unified1/SPIRV.html#_a_id_physicallayout_a_physical_layout_of_a_spir_v_module_and_instruction) as:
 
 ![parsing_instructions_spec_table.png](../images/parsing_instructions_spec_table.png)
 

@@ -1,6 +1,6 @@
 # Extension Overview
 
-Extensions are a way to add features to the SPIR-V spec as described in the [extendability section of the spec](https://www.khronos.org/registry/spir-v/specs/unified1/SPIRV.html#_extendability). All extension can be found in the [SPIRV-Registry](https://github.com/KhronosGroup/SPIRV-Registry/tree/master/extensions)
+Extensions are a way to add features to the SPIR-V spec as described in the [extendability section of the spec](https://registry.khronos.org/SPIR-V/specs/unified1/SPIRV.html#_extendability). All extension can be found in the [SPIRV-Registry](https://github.com/KhronosGroup/SPIRV-Registry/tree/main/extensions)
 
 Some extensions are "vendor" extension and are labeled as `SPV_VENDOR_Extension_name`. These types of extensions allow a vendor to expose features in SPIR-V shaders which are not going to be available on other vendor's implementations.
 
@@ -8,12 +8,12 @@ The rest of the extensions are "multi-vendor" and are labeled as either `SPV_EXT
 
 > The main difference between `EXT` and `KHR` is that KHR is a Khronos extensions and are ratified by Khronos, therefore are covered by the Khronos IP framework.
 
-> **Tip**: Prepend the URL in the SPIRV-Registry with `http://htmlpreview.github.io/?` to preview the page as html. Example with [SPV_KHR_8bit_storage](http://htmlpreview.github.io/?https://github.com/KhronosGroup/SPIRV-Registry/blob/master/extensions/KHR/SPV_KHR_8bit_storage.html)
+> **Tip**: Prepend the URL in the SPIRV-Registry with `http://htmlpreview.github.io/?` to preview the page as html. Example with [SPV_KHR_8bit_storage](http://htmlpreview.github.io/?https://github.com/KhronosGroup/SPIRV-Registry/blob/main/extensions/KHR/SPV_KHR_8bit_storage.html)
 
 
 ## Extension Workflow
 
-Extensions are mainly added to correspond to a client API's usage ([Vulkan workflow example](https://github.com/KhronosGroup/Vulkan-Guide/blob/master/chapters/spirv_extensions.adoc)).
+Extensions are mainly added to correspond to a client API's usage ([Vulkan workflow example](https://github.com/KhronosGroup/Vulkan-Guide/blob/main/chapters/spirv_extensions.adoc)).
 
 Using `SPV_KHR_multiview` as an example with the following GLSL targeting SPIR-V 1.0
 

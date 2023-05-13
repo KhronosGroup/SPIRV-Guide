@@ -1,6 +1,6 @@
 # CFG Unordered Nesting
 
-The SPIR-V spec has some [CFG requirements](https://www.khronos.org/registry/spir-v/specs/unified1/SPIRV.html#_a_id_structuredcontrolflow_a_structured_control_flow) for the ordering of blocks in a function with regards to two blocks having to `dominate`, `strictly dominate`, and `post dominate` each other.
+The SPIR-V spec has some [CFG requirements](https://registry.khronos.org/SPIR-V/specs/unified1/SPIRV.html#_a_id_structuredcontrolflow_a_structured_control_flow) for the ordering of blocks in a function with regards to two blocks having to `dominate`, `strictly dominate`, and `post dominate` each other.
 
 Outside of these requirements, SPIR-V doesn't require basic blocks to be in "structured order". This means the physical ordering of the blocks in the module need not be nested according to the structure. This means any consumer of SPIR-V **can't walk through a function in order and keep a stack of nesting information**.
 

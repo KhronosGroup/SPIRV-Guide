@@ -10,7 +10,7 @@ Examples:
   * [Arrays](#example---arrays)
 
 
-From reading the [spec](https://www.khronos.org/registry/spir-v/specs/unified1/SPIRV.html#OpAccessChain), simply put:
+From reading the [spec](https://registry.khronos.org/SPIR-V/specs/unified1/SPIRV.html#OpAccessChain), simply put:
 
 > OpAccessChains create a pointer into a composite object that can be used with OpLoad and OpStore.
 
