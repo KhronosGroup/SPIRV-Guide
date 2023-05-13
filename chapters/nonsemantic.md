@@ -22,7 +22,7 @@ void main() {
 }
 ```
 
-the output SPIR-V Assembly roughly looks like
+the output SPIR-V disassembly roughly looks like
 
 ```swift
        Extension  "SPV_KHR_non_semantic_info"

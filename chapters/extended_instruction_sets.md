@@ -31,7 +31,7 @@ void main() {
 }
 ```
 
-produces the following SPIR-V Assembly
+produces the following SPIR-V disassembly
 
 ```
  1:           ExtInstImport  "GLSL.std.450"
