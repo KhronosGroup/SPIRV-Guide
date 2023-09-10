@@ -20,6 +20,7 @@ The SPIR-V Guide is designed to help developers get up and going with the world 
 - [Entry Point, Execution Model, and Execution Mode](./chapters/entry_execution.md)
 - [Types](./chapters/types.md)
 - [Access Chains](./chapters/access_chains.md)
+- [Storage Class](./chapters/storage_class.md)
 
 ## Control Flow
 - [Functions and Blocks](./chapters/functions_blocks.md)
