@@ -8,6 +8,7 @@ Examples:
   * [In bound access](#example---in-bound-access)
   * [Accessing through physical pointers](#example---accessing-through-physical-pointers)
   * [Arrays](#example---arrays)
+  * [Chained Access Chains](#example---chained-access-chains)
 
 
 From reading the [spec](https://registry.khronos.org/SPIR-V/specs/unified1/SPIRV.html#OpAccessChain), simply put:
@@ -163,7 +164,6 @@ The code `root.next.next.next.x` produces 5 `OpLoad` and `OpAccessChain` to get 
 %x     = OpLoad %6 %25                 // loads root.next.next.next.x
 ```
 
-
 ## Example - Arrays
 
 [example_array GLSL](examples/access_chains/example_array.comp) | [example_array SPIR-V binary](examples/access_chains/example_array.spv) | [example_array SPIR-V disassembled](examples/access_chains/example_array.spvasm)
@@ -236,3 +236,59 @@ while (instruction.opcode() == spv::OpTypeArray || instruction.opcode() == spv::
 ```
 
 Also note that some API clients, such as Vulkan, have restrictions how many array-of-arrays are allowed for some storage classes.
+
+## Example - Chained Access Chains
+
+It is possible to have `OpAccessChain` use another `OpAccessChain` as the base
+
+The following GLSL
+
+```glsl
+#version 450
+
+struct Foo {
+    int a;
+    int b;
+};
+
+layout(set = 0, binding = 0) buffer InputBuffer {
+    Foo input_values[2];
+} in_v;
+
+layout(set = 0, binding = 1) buffer OutputBuffer {
+    Foo output_values[2];
+} out_v;
+
+void main() {
+    in_v.output_values = out_v.input_values;
+}
+```
+
+will need to do two separate `OpStore` for each element of the `Foo[2]` array
+
+This can be done with a 2-deep index access chain
+
+```swift
+// output_values[0].a
+%ac_0 = OpAccessChain %ptr_struct %out_val %int_0 %int_0
+OpStore %ac_0 %val_0
+
+// output_values[0].b
+%ac_1 = OpAccessChain %ptr_struct %out_val %int_0 %int_1
+OpStore %ac_1 %val_1
+```
+
+but it can also use an intermediate `OpAccessChain` as well
+
+```swift
+// output_values[0]
+%ac_base = OpAccessChain %ptr_array %out_val %int_0
+
+// a
+%ac_0 = OpAccessChain %ptr_struct %ac_base %int_0
+OpStore %ac_0 %val_0
+
+// b
+%ac_1 = OpAccessChain %ptr_struct %ac_base %int_1
+OpStore %ac_1 %val_1
+```
