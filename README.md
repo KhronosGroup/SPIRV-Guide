@@ -5,6 +5,11 @@
 
 The SPIR-V Guide is designed to help developers get up and going with the world of SPIR-V. This guide is targeted at developers needing to use compilers SPIR-V in their tool chains and for developers wishing to develop custom tooling or compilers that outputs SPIR-V.
 
+## Default Branch Renamed to 'main'
+
+As of January 23, 2024, the default branch of this repository has been renamed from 'master' to 'main' following Khronos policy.
+Instructions for updating local repository clones are provided by GitHub.
+
 ## Logistics Overview
 - [What is SPIR-V?](./chapters/what_is_spirv.md)
 - [What can you do with SPIR-V](./chapters/what_spirv_can_do.md)
