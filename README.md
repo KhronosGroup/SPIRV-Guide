@@ -34,6 +34,7 @@ Instructions for updating local repository clones are provided by GitHub.
 
 ### Outside educational material
 - [google/spirv-tutor](https://github.com/google/spirv-tutor)
+- Khronos Developer Day Osaka 2023 ([video](https://youtu.be/sgUPm0fGSbs?si=Qu09UolraAIzkVS7&t=13229) and [slides](https://www.lunarg.com/wp-content/uploads/2023/05/SPIRV-Osaka-MAY2023.pdf))
 
 ## Extending SPIR-V
 - [Extensions overview](./chapters/extension_overview.md)
