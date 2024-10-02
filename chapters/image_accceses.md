@@ -1,12 +1,12 @@
 # Image Accesses
 
-SPIR-V has various [Image Instructions](https://registry.khronos.org/SPIR-V/specs/unified1/SPIRV.html#_image_instructions) that will interact with `OpTypeImage`. This chapter aims to give some extra context around these instructions.
+SPIR-V has various [Image Instructions](https://registry.khronos.org/SPIR-V/specs/unified1/SPIRV.html#_image_instructions) that interact with `OpTypeImage`. This chapter aims to give some extra context around these instructions.
 
 > There is an [example.frag](./examples/image_accesses/example.frag) (and [example.spv](./examples/image_accesses/example.spv)) GLSL shader that has an example of various ways images can be accessed in SPIR-V.
 
 # Images as Handles
 
-An `OpTypeImage` can be thought of as a handle the underlying data. To help illustrate this, here is a small program that writes to an image
+An `OpTypeImage` can be thought of as a handle to the underlying texel data. To help illustrate this, here is a small program that writes to an image
 
 ```glsl
 layout(set = 0, binding = 1, rgba8) uniform writeonly image2D image;
@@ -38,9 +38,9 @@ The above `OpVariable` is read-only because we are not allowed to adjust its for
 
 # Sampled Images
 
-When using a sampler, you must have a `OpTypeSampledImage` object, this will be directly pointing to a `OpTypeImage` object.
+When using a sampler, you must have an `OpTypeSampledImage` object, this will be directly pointing to an `OpTypeImage` object.
 
-To access the sampled image you will use a `OpImage*Sample*` instruction (ex. `OpImageSampleImplicitLod`) to get a `OpSampledImage`. (It can also use a `OpImage*Gather` as well)
+To access the sampled image you will use an `OpImage*Sample*` instruction (ex. `OpImageSampleImplicitLod`) to get an `OpSampledImage`. (It can also use an `OpImage*Gather` as well)
 
 ![image_access_sampled_image.png](../images/image_access_sampled_image.png)
 
@@ -72,7 +72,7 @@ There are some `OpImageQuery*` instructions that are designed to directly access
 
 Before you do an operation such as an atomic image load, you need to get a pointer for the memory.
 
-The `OpImageTexelPointer` allows you take a texel inside an image, and create a pointer to it which can be accessed by an atomic image operation.
+The `OpImageTexelPointer` allows you to take a texel inside an image, and create a pointer to it which can be accessed by an atomic image operation.
 
 Example: `OpAtomicLoad -> OpImageTexelPointer -> OpVariable`
 
@@ -86,7 +86,7 @@ To see this in practice we can view the difference between a `imageAtomicStore` 
      OpImageWrite %2 %coor %texel
 ```
 
-While the `OpLoad` returns a `OpTypeImage` that we store the new texel, with `OpImageTexelPointer` we get a direct pointer to the texel data and can store scalar value like `OpConstant %int 0`. This is posssible because the `Coordinate` operand is supplied in the `OpImageTexelPointer` instead aftewards in the actual "write" operation.
+While the `OpLoad` returns an `OpTypeImage` that we store the new texel, with `OpImageTexelPointer` we get a direct pointer to the texel data and can store scalar value like `OpConstant %int 0`. This is posssible because the `Coordinate` operand is supplied in the `OpImageTexelPointer` instead afterwards in the actual "write" operation.
 
 ## OpImageSparseTexelsResident
 
