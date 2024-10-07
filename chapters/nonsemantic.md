@@ -25,14 +25,14 @@ void main() {
 the output SPIR-V disassembly roughly looks like
 
 ```swift
-       Extension  "SPV_KHR_non_semantic_info"
-13:    ExtInstImport  "NonSemantic.DebugPrintf"
+       OpExtension "SPV_KHR_non_semantic_info"
+%13  = OpExtInstImport "NonSemantic.DebugPrintf"
 
-2:     TypeVoid
-10:    String  "Here are two float values %f, %f"
-       SourceExtension  "GL_EXT_debug_printf"
+%2   = OpTypeVoid
+%10  = OpString "Here are two float values %f, %f"
+       OpSourceExtension "GL_EXT_debug_printf"
 
-14:  2 ExtInst 13(NonSemantic.DebugPrintf) 1(DebugPrintf) 10 11 12
+%14  = %2 OpExtInst %13 %1 %10 %11 %12
 ```
 
 Breaking this down:
@@ -55,6 +55,22 @@ OpExtInstImport  "NonSemantic.ClspvReflection.2"  // revision 2
 ```
 
 The details of versioning and the string to detect can be found per extension in the [SPIRV-Registry](https://github.com/KhronosGroup/SPIRV-Registry/tree/main/nonsemantic)
+
+## No literals allowed
+
+For those parsing the grammar, you may notice for non-semantic instruction there are no references to `ValueEnum` or `BitEnum`. So instead of having something such as
+
+```json
+{ "kind" : "SomeEnumName", "name" : "'Value'" },
+```
+
+everything will be an `IdRef` that points to an `OpConstant` or `OpString` instead
+
+```json
+{ "kind" : "IdRef", "name" : "'Value'" },
+```
+
+More information can be found in [OpExtInstImport](https://registry.khronos.org/SPIR-V/specs/unified1/SPIRV.html#OpExtInstImport), but this is done so if someone introduced a new non-semantic instruction, things will not break from under an old parser.
 
 ## Adding a new non-semantic extension
 
