@@ -123,6 +123,9 @@ To see this in practice we can view the difference between a `imageAtomicStore` 
 
 While the `OpLoad` returns an `OpTypeImage` that we store the new texel, with `OpImageTexelPointer` we get a direct pointer to the texel data and can store scalar value like `OpConstant %int 0`. This is posssible because the `Coordinate` operand is supplied in the `OpImageTexelPointer` instead afterwards in the actual "write" operation.
 
+You are not expected to do any pointer math on the pointer returned by `OpImageTexelPointer`.
+To get a pointer to a different texel, you should call `OpImageTexelPointer` again, with a different coordinate.
+
 ## OpImageSparseTexelsResident
 
 When dealing with sparse textures, you can have some memory that is not actually available to access. Before trying to access it, we will want to query to make sure it is safe.
