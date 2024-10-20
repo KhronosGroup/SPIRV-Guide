@@ -72,11 +72,21 @@ When not using a sampler (ex. storage image), you can directly use an loaded `Op
 Instructions such as `OpImageRead` and `OpImageWrite` will use the result of a `OpLoad`.
 This `OpLoad` will be loading in a variable of type image (`OpTypeImage`).
 
-![image_access_storage_image.png](../images/image_access_storage_image.png)
+![image_access_storage_image.svg](../images/image_access_storage_image.svg)
 
-> The `OpImageWrite` calls `OpLoad` but this is **not** an image "read access". The `OpLoad` just grabs the reference, but there is only a "write access" here on the image.
+## Loading handle vs loading texel
 
-> Note you will **not** be using an `OpImage` when accessing an image without a sampler.
+The following code/diagram shows an example how an `OpImageWrite` instruction is used.
+
+![image_access_handle.svg](../images/image_access_handle.svg)
+
+From the code, we se that the `OpImageWrite` calls `OpLoad` to load the the handle (`image_view_a`/`image_view_b`).
+From there is then does a "write" to update the texel data.
+The "write" did not update the handle/pointer, but the texel data itself.
+This means there was no "read access" texel data.
+
+SPIR-V has decorations for `NonReadable`/`NonWritable` that can be applied to an image as well.
+These decorations are applied to the texel data, not to the handles.
 
 # OpImage
 
@@ -86,6 +96,8 @@ With many other things also starting with `OpImage*` it is easy to lose track wh
 
 The `OpImage` instruction extracts an `OpTypeImage` from an `OpTypeSampledImage`.
 The `OpImage` is describing an action, rather than the input to or the output from an action.
+
+This means you will **not** be using an `OpImage` when accessing an image without a sampler.
 
 # Image Queries
 
