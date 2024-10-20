@@ -4,6 +4,19 @@ SPIR-V has various [Image Instructions](https://registry.khronos.org/SPIR-V/spec
 
 > There is an [example.frag](./examples/image_accesses/example.frag) (and [example.spv](./examples/image_accesses/example.spv)) GLSL shader that has an example of various ways images can be accessed in SPIR-V.
 
+# Coordinate Systems
+
+It is important to know there are 3 texel coordinate systems used for images:
+
+- Normalized (floats)
+- Unnormalized (floats)
+- Integers
+
+The SPIR-V spec documents which instructions are allowed to use which coordinate system.
+The [Vulkan Spec Texel Coordinate Systems Chapter](https://registry.khronos.org/vulkan/specs/1.3-extensions/html/vkspec.html#textures-texel-coordinate-systems) is a good resource to learn more about this.
+
+When using a `vec4` (4 wide vector) as a coordinate, the API spec defines which each vector element points to. As an example, in Vulkan, when using Unnormalized coordinates, the `vec4.z` element is the value of the `array layer`.
+
 # Images as Handles
 
 An `OpTypeImage` can be thought of as a handle to the underlying texel data. To help illustrate this, here is a small program that writes to an image
@@ -48,7 +61,7 @@ To access the sampled image you will use an `OpImage*Sample*` instruction (ex. `
 
 There are also `OpImageFetch` (and `OpImageSparseFetch`) instructions which work similar as `OpImage*Sample*`.
 
-While the `OpImage*Sample*` takes float coordinates and does a lookup to get the texel, the `OpImageFetch` takes direct image coordinates to the exact texel to return.
+The `OpImageFetch` only takes integer texel coordinates. The texture data is read directly without any sampling operations.
 
 This means an `OpImageFetch` will directly access through an `OpImage` and doesn't need an `OpSampledImage` object.
 
