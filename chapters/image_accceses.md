@@ -67,15 +67,25 @@ This means an `OpImageFetch` will directly access through an `OpImage` and doesn
 
 # Non-sampled image
 
-When not using a sampler (ex. storage image), you can directly use an `OpTypeImage` object.
+When not using a sampler (ex. storage image), you can directly use an loaded `OpTypeImage` object.
 
-> Note you will **not** be using an `OpImage` when accessing an image without a sampler. The `OpImage` is designed to point to the image of the sampler/image combination.
-
-The `OpImageRead` and `OpImageWrite` will directly go to the `OpLoad` into the variable.
+Instructions such as `OpImageRead` and `OpImageWrite` will use the result of a `OpLoad`.
+This `OpLoad` will be loading in a variable of type image (`OpTypeImage`).
 
 ![image_access_storage_image.png](../images/image_access_storage_image.png)
 
 > The `OpImageWrite` calls `OpLoad` but this is **not** an image "read access". The `OpLoad` just grabs the reference, but there is only a "write access" here on the image.
+
+> Note you will **not** be using an `OpImage` when accessing an image without a sampler.
+
+# OpImage
+
+With many other things also starting with `OpImage*` it is easy to lose track what `OpImage` is for. As the spec says simply:
+
+>  [OpImage] Extract the image from a sampled image.
+
+The `OpImage` instruction extracts an `OpTypeImage` from an `OpTypeSampledImage`.
+The `OpImage` is describing an action, rather than the input to or the output from an action.
 
 # Image Queries
 
