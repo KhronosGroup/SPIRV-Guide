@@ -51,7 +51,7 @@ The above `OpVariable` is read-only because we are not allowed to adjust its for
 
 # Sampled Images
 
-When using a sampler, you must have an `OpTypeSampledImage` object, this will be directly pointing to an `OpTypeImage` object.
+When using a sampler, you must have an `OpTypeSampledImage` object, this will be directly pointing to an image object of `OpTypeImage`.
 
 To access the sampled image you will use an `OpImage*Sample*` instruction (ex. `OpImageSampleImplicitLod`) to get an `OpSampledImage`. (It can also use an `OpImage*Gather` as well)
 
@@ -67,7 +67,7 @@ This means an `OpImageFetch` will directly access through an `OpImage` and doesn
 
 # Non-sampled image
 
-When not using a sampler (ex. storage image), you can directly use an loaded `OpTypeImage` object.
+When not using a sampler (ex. storage image), you can directly use an loaded image object of `OpTypeImage`.
 
 Instructions such as `OpImageRead` and `OpImageWrite` will use the result of a `OpLoad`.
 This `OpLoad` will be loading in a variable of type image (`OpTypeImage`).
@@ -94,14 +94,14 @@ With many other things also starting with `OpImage*` it is easy to lose track wh
 
 >  [OpImage] Extract the image from a sampled image.
 
-The `OpImage` instruction extracts an `OpTypeImage` from an `OpTypeSampledImage`.
+The `OpImage` instruction extracts image object of `OpTypeImage` from an `OpTypeSampledImage`.
 The `OpImage` is describing an action, rather than the input to or the output from an action.
 
 This means you will **not** be using an `OpImage` when accessing an image without a sampler.
 
 # Image Queries
 
-There are some `OpImageQuery*` instructions that are designed to access metadata from an `OpTypeImage` object.
+There are some `OpImageQuery*` instructions that are designed to access metadata from image object of `OpTypeImage`.
 
 ```swift
 // Example
@@ -132,7 +132,7 @@ To see this in practice we can view the difference between a `imageAtomicStore` 
      OpImageWrite %2 %coor %texel
 ```
 
-While the `OpLoad` returns an `OpTypeImage` that we store the new texel, with `OpImageTexelPointer` we get a direct pointer to the texel data and can store scalar value like `OpConstant %int 0`. This is posssible because the `Coordinate` operand is supplied in the `OpImageTexelPointer` instead afterwards in the actual "write" operation.
+While the `OpLoad` returns an image object of `OpTypeImage` that we store the new texel, with `OpImageTexelPointer` we get a direct pointer to the texel data and can store scalar value like `OpConstant %int 0`. This is posssible because the `Coordinate` operand is supplied in the `OpImageTexelPointer` instead afterwards in the actual "write" operation.
 
 You are not expected to do any pointer math on the pointer returned by `OpImageTexelPointer`.
 To get a pointer to a different texel, you should call `OpImageTexelPointer` again, with a different coordinate.
