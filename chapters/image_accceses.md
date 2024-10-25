@@ -101,7 +101,18 @@ This means you will **not** be using an `OpImage` when accessing an image withou
 
 # Image Queries
 
-There are some `OpImageQuery*` instructions that are designed to directly access an `OpTypeImage` object. The image itself is not accessed.
+There are some `OpImageQuery*` instructions that are designed to access metadata from an `OpTypeImage` object.
+
+```swift
+// Example
+%type_image = OpTypeImage %int 2D 0 0 1 1 Unknown
+%var = OpVariable %ptr UniformConstant
+%load = OpLoad %type_image %var
+%query = OpImageQuerySize %int %load
+```
+
+The texel data itself is not accessed.
+For cases such as `OpImageQueryLod`, the actual operation is not performed.
 
 ## OpImageTexelPointer
 
