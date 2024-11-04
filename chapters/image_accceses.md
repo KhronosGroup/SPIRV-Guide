@@ -2,20 +2,20 @@
 
 SPIR-V has various [Image Instructions](https://registry.khronos.org/SPIR-V/specs/unified1/SPIRV.html#_image_instructions) that interact with `OpTypeImage`. This chapter aims to give some extra context around these instructions.
 
-> There is an [example.frag](./examples/image_accesses/example.frag) (and [example.spv](./examples/image_accesses/example.spv)) GLSL shader that has an example of various ways images can be accessed in SPIR-V.
+> There is an [example.frag](./examples/image_accesses/example.frag) (and [example.spv](./examples/image_accesses/example.spv)) GLSL shader that has an example of various ways images can be accessed in SPIR-V. [Online Compiler Explorer version](https://godbolt.org/z/d3shn8675)
 
 # Coordinate Systems
 
 It is important to know there are 3 texel coordinate systems used for images:
 
-- Normalized (floats)
-- Unnormalized (floats)
+- Normalized (float values from [0, 1])
+- Unnormalized (float value from [0, image size in each dimension])
 - Integers
 
 The SPIR-V spec documents which instructions are allowed to use which coordinate system.
 The [Vulkan Spec Texel Coordinate Systems Chapter](https://registry.khronos.org/vulkan/specs/1.3-extensions/html/vkspec.html#textures-texel-coordinate-systems) is a good resource to learn more about this.
 
-When using a `vec4` (4 wide vector) as a coordinate, the API spec defines which each vector element points to. As an example, in Vulkan, when using Unnormalized coordinates, the `vec4.z` element is the value of the `array layer`.
+When using a `vec4` (4 wide vector) as a coordinate, the API spec defines what each vector element represents. As an example, in Vulkan, when using Unnormalized coordinates, the `vec4.z` element is the value of the `array layer`.
 
 # Images as Handles
 
@@ -28,7 +28,7 @@ void main() {
 }
 ```
 
-Taking a closer look at the `OpVariable` we see it is of type [UniformConstant](../chapters/storage_class.md#uniformconstant) which is suppose to be "read-only" (yet there is a clear `OpImageWrite` occuring here).
+Taking a closer look at the `OpVariable` we see it is in the [UniformConstant](../chapters/storage_class.md#uniformconstant) Storage Class which is suppose to be "read-only" (yet there is a clear `OpImageWrite` occuring here).
 
 This is possible because the handle to the image is read-only, but the underlying texel data of the image is mutable.
 
@@ -53,7 +53,9 @@ The above `OpVariable` is read-only because we are not allowed to adjust its for
 
 When using a sampler, you must have an `OpTypeSampledImage` object, this will be directly pointing to an image object of `OpTypeImage`.
 
-To access the sampled image you will use an `OpImage*Sample*` instruction (ex. `OpImageSampleImplicitLod`) to get an `OpSampledImage`. (It can also use an `OpImage*Gather` as well)
+The `OpSampledImage` instruction is used to create a sampled image, from an image and a sampler.
+
+To access the sampled image you will use an `OpImage*Sample*` instruction (ex. `OpImageSampleImplicitLod`).
 
 ![image_access_sampled_image.png](../images/image_access_sampled_image.png)
 
@@ -63,7 +65,7 @@ There are also `OpImageFetch` (and `OpImageSparseFetch`) instructions which work
 
 The `OpImageFetch` only takes integer texel coordinates. The texture data is read directly without any sampling operations.
 
-This means an `OpImageFetch` will directly access through an `OpImage` and doesn't need an `OpSampledImage` object.
+This means the `OpImageFetch` instruction will directly access through an object of type `OpTypeImage` and doesn't need an `OpTypeSampledImage` object.
 
 # Non-sampled image
 
@@ -80,7 +82,7 @@ The following code/diagram shows an example how an `OpImageWrite` instruction is
 
 ![image_access_handle.svg](../images/image_access_handle.svg)
 
-From the code, we se that the `OpImageWrite` calls `OpLoad` to load the the handle (`image_view_a`/`image_view_b`).
+From the code, we see that the `OpImageWrite` calls `OpLoad` to load the the handle (`image_view_a`/`image_view_b`).
 From there is then does a "write" to update the texel data.
 The "write" did not update the handle/pointer, but the texel data itself.
 This means there was no "read access" texel data.
@@ -95,9 +97,10 @@ With many other things also starting with `OpImage*` it is easy to lose track wh
 >  [OpImage] Extract the image from a sampled image.
 
 The `OpImage` instruction extracts image object of `OpTypeImage` from an `OpTypeSampledImage`.
-The `OpImage` is describing an action, rather than the input to or the output from an action.
 
-This means you will **not** be using an `OpImage` when accessing an image without a sampler.
+The `OpImage` instruction is describing an action, rather than the input to or the output from an action.
+
+The `OpImage` instruction is useful if you have an object of type `OpTypeSampledImage` and you need an object of type `OpTypeImage`. (example, accessing the image data without a sampler.)
 
 # Image Queries
 
