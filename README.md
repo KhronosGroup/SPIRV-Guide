@@ -28,6 +28,7 @@ Instructions for updating local repository clones are provided by GitHub.
 - [Structs](./chapters/structs.md)
 - [Access Chains](./chapters/access_chains.md)
 - [Storage Class](./chapters/storage_class.md)
+- [Image Accesses](./chapters/image_accesses.md)
 
 ## Control Flow
 - [Functions and Blocks](./chapters/functions_blocks.md)
