@@ -53,11 +53,21 @@ The above `OpVariable` is read-only because we are not allowed to adjust its for
 
 When using a sampler, you must have an `OpTypeSampledImage` object, this will be directly pointing to an image object of `OpTypeImage`.
 
-The `OpSampledImage` instruction is used to create a sampled image, from an image and a sampler.
+## Combined Image Samplers
+
+The `Input` `OpVariable` can sometimes contain both the Sampler and Image (Vulkan calls these `VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER`). 
+
+When these variables are loaded, they will be of type `OpTypeSampledImage`.
+
+## Non-Combined Sampled Images
+
+The `OpSampledImage` instruction is used to create a sampled image, from two seperate `OpVariable` (one image and one sampler).
 
 To access the sampled image you will use an `OpImage*Sample*` instruction (ex. `OpImageSampleImplicitLod`).
 
 ![image_access_sampled_image.png](../images/image_access_sampled_image.png)
+
+> [Simple example of combined and non-combined sampled images](https://godbolt.org/z/rhnTWGrdG)
 
 ## Fetch
 
@@ -65,7 +75,7 @@ There are also `OpImageFetch` (and `OpImageSparseFetch`) instructions which work
 
 The `OpImageFetch` only takes integer texel coordinates. The texture data is read directly without any sampling operations.
 
-This means the `OpImageFetch` instruction will directly access through an object of type `OpTypeImage` and doesn't need an `OpTypeSampledImage` object.
+This means the `OpImageFetch` instruction will directly access through an object of type `OpTypeImage` and doesn't need an `OpTypeSampledImage` object directly.
 
 # Non-sampled image
 
