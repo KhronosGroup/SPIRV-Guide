@@ -44,3 +44,4 @@ Instructions for updating local repository clones are provided by GitHub.
 - [Creating an extension](./chapters/creating_extension.md)
 - [Extended instruction sets](./chapters/extended_instruction_sets.md)
 - [Non-Semantic Instructions](./chapters/nonsemantic.md)
+    - [NonSemantic Shader DebugInfo](./chapters/shader_debug_info.md)
