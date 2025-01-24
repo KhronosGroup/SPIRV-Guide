@@ -74,9 +74,11 @@ Once you have a source the `DebugLine` and `DebugNoLine` can be used to
 
 ```
 %uint = OpTypeInt 32 0
-%uint_11 = OpConstant %uint 11
-%uint_13 = OpConstant %uint 13
-%uint_20 = OpConstant %uint 20
+%uint_2 = OpConstant %uint 2
+%uint_4 = OpConstant %uint 4
+%uint_6 = OpConstant %uint 6
 
-%x = OpExtInst %void %import DebugLine %debug_source %uint_20 %uint_20 %uint_11 %uint_13
-``
+%x = OpExtInst %void %import DebugLine %debug_source %uint_2 %uint_2 %uint_4 %uint_6
+```
+
+Here we see the line of the following code occurs at `line 2, column 4:6`
