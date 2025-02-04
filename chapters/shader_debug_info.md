@@ -68,6 +68,20 @@ The `DebugSource` and `DebugSourceContinued` are used to reference the file and 
 %debug_source = OpExtInst %void %import DebugSource %file_name %source_text
 ```
 
+Example when `DebugSourceContinued` is used
+
+```swift
+  %source_text_0 = OpString "
+        lots of source
+        ....
+        hit string max"
+  %source_text_1 = OpString "
+        rest of the source"
+
+%debug_source   = OpExtInst %void %import DebugSource %file_name %source_text_0
+%debug_source_c = OpExtInst %void %import DebugSourceContinued %source_text_1
+```
+
 ### Getting the line and column
 
 Once you have a source the `DebugLine` and `DebugNoLine` can be used to
