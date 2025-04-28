@@ -13,4 +13,15 @@ LunarG has written a very nice [white paper](https://registry.khronos.org/SPIR-V
 ([video of both](https://www.youtube.com/watch?v=XRpVwdduzgU)).
 
 Compiler technology and languages evolve quickly.  SPIR-V provides a common interchange format to transition, not just into Vulkan, OpenGL, and OpenCL drivers, but between different tool chains.  With a well defined format, validation rules, and rich tools SPIR-V enables custom shader compiler flows, choice of language, and debuggability not available with graphical shaders and compute kernels before.
-![what_is_spirv_overview.png](../images/what_is_spirv_overview.png)
+
+## SPIR-V for people coming from CPU land
+
+Likely people are used to the idea of how LLVM is used as a IR for the CPU world to get any front end langage to various ISA
+
+![what_is_spirv_cpu.png](../images/what_is_spirv_cpu.png)
+
+We can take that same idea and replace `LLVM IR` here with `SPIR-V`
+
+> SPIR-V design has many aspects taken from how LLVM IR is structured
+
+![what_is_spirv_gpu.png](../images/what_is_spirv_gpu.png)

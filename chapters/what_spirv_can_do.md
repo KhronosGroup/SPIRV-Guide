@@ -2,6 +2,20 @@
 
 As an intermediate representation, there is not much you can do with SPIR-V by itself. With any intermediate representation, there is a whole ecosystem around it for tools that both input and output SPIR-V.
 
+## Parts of the ecosystem
+
+### High Level Languages (HLL)
+
+Languages such GLSL, HLSL, Slang, OpenCL, etc are designed for developers to write their programs in. These languages can then be compiled into SPIR-V modules.
+
+### Client API
+
+API such as Vulkan and OpenCL use SPIR-V as an input and pass down to the hardware
+
+### Tools
+
+There are various tools that will consume SPIR-V to help debug, alter, visualize it.
+
 ![what_spirv_can_do_ecosystem.png](../images/what_spirv_can_do_ecosystem.png))
 
 ## Use with Vulkan
