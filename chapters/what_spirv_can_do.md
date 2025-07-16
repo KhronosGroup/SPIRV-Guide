@@ -16,7 +16,7 @@ API such as Vulkan and OpenCL use SPIR-V as an input and pass down to the hardwa
 
 There are various tools that will consume SPIR-V to help debug, alter, visualize it.
 
-![what_spirv_can_do_ecosystem.png](../images/what_spirv_can_do_ecosystem.png))
+![what_spirv_can_do_ecosystem.png](../images/what_spirv_can_do_ecosystem.png)
 
 ## Use with Vulkan
 
