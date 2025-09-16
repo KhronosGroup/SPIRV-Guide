@@ -25,6 +25,7 @@ Instructions for updating local repository clones are provided by GitHub.
 - [Entry Point, Execution Model, and Execution Mode](./chapters/entry_execution.md)
     - [LocalSize and WorkgroupSize](./chapters/local_size_and_workgroup_size.md)
 - [Types](./chapters/types.md)
+- [Untyped Pointers](./chapters/untyped_pointers.md) (SPV_KHR_untyped_pointers)
 - [Structs](./chapters/structs.md)
 - [Access Chains](./chapters/access_chains.md)
 - [Storage Class](./chapters/storage_class.md)
