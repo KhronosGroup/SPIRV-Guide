@@ -50,4 +50,4 @@ This is for pointers into texture storage, for storage buffers. But this is only
 
 ## Interfacing with Vulkan
 
-There is a [table in the Vulkan Spec](https://registry.khronos.org/vulkan/specs/1.3-extensions/html/vkspec.html#interfaces-resources-storage-class-correspondence) the maps which Vulkan resource types to each SPIR-V Storage Class. There is also a [Vulkan Guide Chapter](https://github.com/KhronosGroup/Vulkan-Guide/blob/main/chapters/mapping_data_to_shaders.adoc) with examples.
+There is a [table in the Vulkan Spec](https://docs.vulkan.org/spec/latest/chapters/interfaces.html#interfaces-resources-storage-class-correspondence) the maps which Vulkan resource types to each SPIR-V Storage Class. There is also a [Vulkan Guide Chapter](https://github.com/KhronosGroup/Vulkan-Guide/blob/main/chapters/mapping_data_to_shaders.adoc) with examples.

@@ -24,16 +24,16 @@ SPIR-V is the language for Vulkan shaders. The Vulkan-Guide goes over in detail 
 
 Within the [Vulkan specification](https://github.com/KhronosGroup/Vulkan-Guide/blob/main/chapters/vulkan_spec.md):
 
-* [Appendix A: Vulkan environment for SPIR-V](https://registry.khronos.org/vulkan/specs/1.3/html/vkspec.html#spirvenv)
+* [Appendix A: Vulkan environment for SPIR-V](https://docs.vulkan.org/spec/latest/appendices/spirvenv.html)
   defines requirements for SPIR-V modules when used with Vulkan.  For example, it limits what
-  [SPIR-V capabilities are supported by Vulkan](https://registry.khronos.org/vulkan/specs/1.3/html/vkspec.html#spirvenv-capabilities).
-* [Section 14. Shader Interfaces](https://registry.khronos.org/vulkan/specs/1.3/html/vkspec.html#spirvenv)
+  [SPIR-V capabilities are supported by Vulkan](https://docs.vulkan.org/spec/latest/appendices/spirvenv.html#spirvenv-capabilities).
+* [Section 14. Shader Interfaces](https://docs.vulkan.org/spec/latest/chapters/interfaces.html)
   defines how data gets into and out of a Vulkan shader, and how those interfaces are expressed in SPIR-V.
   It also specifies interface matching rules for shaders combined in a single pipeline.
 * Many Vulkan extensions add [shader features](https://github.com/KhronosGroup/Vulkan-Guide/blob/main/chapters/extensions/shader_features.md). Such a feature is paired with a corresponding SPIR-V extension.
   Sometimes the entire content of a Vulkan extension is to enable features from a SPIR-V extension,
   or to enable a newer version of SPIR-V itself.
-* [Appendix B: Memory Model](https://registry.khronos.org/vulkan/specs/1.3/html/vkspec.html#memory-model)
+* [Appendix B: Memory Model](https://docs.vulkan.org/spec/latest/appendices/memorymodel.html)
   defines a memory consistency model: a detailed specification of how to reason about
   concurrent reads and writes to storage, and how to correctly synchronize those accesses.
   The model spans both actions in the API, and also operations SPIR-V shaders.

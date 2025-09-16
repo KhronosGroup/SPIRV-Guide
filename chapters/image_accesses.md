@@ -13,7 +13,7 @@ It is important to know there are 3 texel coordinate systems used for images:
 - Integers
 
 The SPIR-V spec documents which instructions are allowed to use which coordinate system.
-The [Vulkan Spec Texel Coordinate Systems Chapter](https://registry.khronos.org/vulkan/specs/1.3-extensions/html/vkspec.html#textures-texel-coordinate-systems) is a good resource to learn more about this.
+The [Vulkan Spec Texel Coordinate Systems Chapter](https://docs.vulkan.org/spec/latest/chapters/textures.html#textures-texel-coordinate-systems) is a good resource to learn more about this.
 
 When using a `vec4` (4 wide vector) as a coordinate, the API spec defines what each vector element represents. As an example, in Vulkan, when using Unnormalized coordinates, the `vec4.z` element is the value of the `array layer`.
 
@@ -55,7 +55,7 @@ When using a sampler, you must have an `OpTypeSampledImage` object, this will be
 
 ## Combined Image Samplers
 
-The `Input` `OpVariable` can sometimes contain both the Sampler and Image (Vulkan calls these `VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER`). 
+The `Input` `OpVariable` can sometimes contain both the Sampler and Image (Vulkan calls these `VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER`).
 
 When these variables are loaded, they will be of type `OpTypeSampledImage`.
 

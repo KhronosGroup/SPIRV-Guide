@@ -28,6 +28,6 @@ The main goal behind this repo is to provide a single location for very common t
 
 ## SPIR-V Visualizer
 
-The [SPIRV-Visualizer](https://github.com/KhronosGroup/SPIRV-Visualizer) is a client side only Javascript tool to visualize a SPIR-V Module binary. [Live link](https://www.khronos.org/spir/visualizer/)
+The [SPIRV-Visualizer](https://github.com/KhronosGroup/SPIRV-Visualizer) is a client side only Javascript tool to visualize a SPIR-V Module binary. [Live link](https://www.khronos.org/spirv/visualizer/)
 
 ![khronos_tooling_visualizer.png](../images/khronos_tooling_visualizer.png)
