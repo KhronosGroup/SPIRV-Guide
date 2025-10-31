@@ -11,6 +11,7 @@ The SPIR-V Guide is designed to help developers get up and going with the world 
 - [SPIR-V Spec](./chapters/spirv_spec.md)
 - [Internals of SPIR-V](./chapters/spirv_internals.md)
 - [Capabilities system](./chapters/capabilities.md)
+- [Versions](./chapters/versions.md)
 
 ## Tooling
 - [Khronos provided tooling](./chapters/khronos_tooling.md)
