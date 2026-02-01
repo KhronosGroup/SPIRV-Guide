@@ -42,7 +42,7 @@ Breaking this down:
 - Use `OpExtInst`
     - Set the `Set` field to the imported non-semantic extension
     - Set the `Instruction` to the non-semantic extension specific instruction being added
-        - For `DebugPrintf` it is listed as being instruction `1` in the [extension spec](http://htmlpreview.github.io/?https://github.com/KhronosGroup/SPIRV-Registry/blob/main/extensions/KHR/SPV_KHR_non_semantic_info.html)
+        - For `DebugPrintf` it is listed as being instruction `1` in the [NonSemantic.DebugPrintf extension spec](http://htmlpreview.github.io/?https://github.com/KhronosGroup/SPIRV-Registry/blob/main/nonsemantic/NonSemantic.DebugPrintf.html)
         - ![nonsemantic_debugprintf.png](../images/nonsemantic_debugprintf.png)
 
 ### Revisions
