@@ -26,6 +26,7 @@ The SPIR-V Guide is designed to help developers get up and going with the world 
 - [Access Chains](./chapters/access_chains.md)
 - [Storage Class](./chapters/storage_class.md)
 - [Image Accesses](./chapters/image_accesses.md)
+- [Explicit Layout](./chapters/explicit_layout.md)
 
 ## Control Flow
 - [Functions and Blocks](./chapters/functions_blocks.md)
