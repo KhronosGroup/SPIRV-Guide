@@ -4,7 +4,7 @@ This is the extended instruction set to provide debug information in your SPIR-V
 
 While there is `OpLine` and `OpSource` already in SPIR-V, it has been showen to fall short what is needed to give proper debugging information about the source.
 
-The [OpenCL.DebugInfo.100](https://registry.khronos.org/SPIR-V/specs/unified1/OpenCL.DebugInfo.100.html) was added around when SPIR-V 1.0 was released. Vulkan wanted a similar debug info for `Shader` SPIR-V and created the [NonSemantic.Shader.DebugInfo.100](https://github.com/KhronosGroup/SPIRV-Registry/blob/main/nonsemantic/NonSemantic.Shader.DebugInfo.100.asciidoc) extended instructions.
+The [OpenCL.DebugInfo.100](https://registry.khronos.org/SPIR-V/specs/unified1/OpenCL.DebugInfo.100.html) was added around when SPIR-V 1.0 was released. Vulkan wanted a similar debug info for `Shader` SPIR-V and created the [NonSemantic.Shader.DebugInfo.100](https://github.khronos.org/SPIRV-Registry/nonsemantic/NonSemantic.Shader.DebugInfo.html) extended instructions.
 
 As you may have noticed, the `Shader` version is built around the [NonSemantic](https://github.com/KhronosGroup/SPIRV-Guide/blob/main/chapters/nonsemantic.md) extension to make sure anyone who supports [SPV_KHR_non_semantic_info](http://htmlpreview.github.io/?https://github.com/KhronosGroup/SPIRV-Registry/blob/main/extensions/KHR/SPV_KHR_non_semantic_info.html) extension already can now support `Shader DebugInfo`.
 
