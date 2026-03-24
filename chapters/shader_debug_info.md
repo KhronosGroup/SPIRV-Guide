@@ -10,7 +10,7 @@ As you may have noticed, the `Shader` version is built around the [NonSemantic](
 
 ## How to use
 
-The spec is found on the registry - https://github.com/KhronosGroup/SPIRV-Registry/blob/main/nonsemantic/NonSemantic.Shader.DebugInfo.100.asciidoc
+The spec is found on the registry - https://github.com/KhronosGroup/SPIRV-Registry/blob/main/nonsemantic/NonSemantic.Shader.DebugInfo.asciidoc
 
 The headers are found here - https://github.com/KhronosGroup/SPIRV-Headers/blob/main/include/spirv/unified1/NonSemanticShaderDebugInfo100.h
 
