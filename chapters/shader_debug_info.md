@@ -6,13 +6,15 @@ While there is `OpLine` and `OpSource` already in SPIR-V, it has been showen to 
 
 The [OpenCL.DebugInfo.100](https://registry.khronos.org/SPIR-V/specs/unified1/OpenCL.DebugInfo.100.html) was added around when SPIR-V 1.0 was released. Vulkan wanted a similar debug info for `Shader` SPIR-V and created the [NonSemantic.Shader.DebugInfo.100](https://github.khronos.org/SPIRV-Registry/nonsemantic/NonSemantic.Shader.DebugInfo.html) extended instructions.
 
+Later a 101 revision was added (`NonSemantic.Shader.DebugInfo.101`) and so there is now there is a unified header ([NonSemanticShaderDebugInfo.h](https://github.com/KhronosGroup/SPIRV-Headers/blob/main/include/spirv/unified1/NonSemanticShaderDebugInfo.h)) and the legacy 100 version header ([NonSemanticShaderDebugInfo100.h](https://github.com/KhronosGroup/SPIRV-Headers/blob/main/include/spirv/unified1/NonSemanticShaderDebugInfo100.h))
+
 As you may have noticed, the `Shader` version is built around the [NonSemantic](https://github.com/KhronosGroup/SPIRV-Guide/blob/main/chapters/nonsemantic.md) extension to make sure anyone who supports [SPV_KHR_non_semantic_info](http://htmlpreview.github.io/?https://github.com/KhronosGroup/SPIRV-Registry/blob/main/extensions/KHR/SPV_KHR_non_semantic_info.html) extension already can now support `Shader DebugInfo`.
 
 ## How to use
 
 The spec is found on the registry - https://github.com/KhronosGroup/SPIRV-Registry/blob/main/nonsemantic/NonSemantic.Shader.DebugInfo.asciidoc
 
-The headers are found here - https://github.com/KhronosGroup/SPIRV-Headers/blob/main/include/spirv/unified1/NonSemanticShaderDebugInfo100.h
+The headers are found here - https://github.com/KhronosGroup/SPIRV-Headers/blob/main/include/spirv/unified1/NonSemanticShaderDebugInfo.h
 
 The most basic "hello world" example would be something like
 
@@ -52,7 +54,19 @@ Currently the following tools already generate Shader DebugInfo
 
 ## Consuming
 
-There are many instructions added, here is a breadown of some of the more common ones.
+For those who want to consume ShaderDebugInfo, here is some information to be aware of.
+
+### Getting the import ID
+
+You will want to track the `OpExtInstImport`, so first thing will be doing a string compare on
+
+```
+%debug_info = OpExtInstImport "NonSemantic.Shader.DebugInfo.100"
+```
+
+to track the `%debug_info` where it is used later.
+
+Also be aware that there might other version such as `"NonSemantic.Shader.DebugInfo.101"`
 
 ### Getting the source
 
@@ -80,6 +94,25 @@ Example when `DebugSourceContinued` is used
 
 %debug_source   = OpExtInst %void %import DebugSource %file_name %source_text_0
 %debug_source_c = OpExtInst %void %import DebugSourceContinued %source_text_1
+```
+
+Be care when parsing `DebugSourceContinued` as a new instruciton is **not** a new line.
+
+```swift
+%code0 = OpString "line 1 here
+"
+%code1 = OpString "line 2 here"
+%code2 = OpString " still on line 2"
+%code3 = OpString " still on line 2 and its long
+line 3
+"
+%code4 = OpString "line 4"
+
+%dbg_src0 = OpExtInst %void %debug_info DebugSource %file %code0
+%dbg_src1 = OpExtInst %void %debug_info DebugSourceContinued %code1
+%dbg_src2 = OpExtInst %void %debug_info DebugSourceContinued %code2
+%dbg_src3 = OpExtInst %void %debug_info DebugSourceContinued %code3
+%dbg_src4 = OpExtInst %void %debug_info DebugSourceContinued %code4
 ```
 
 ### Getting the line and column
