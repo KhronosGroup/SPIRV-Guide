@@ -85,3 +85,27 @@ Example of this can be easily seen in a [simple GLSL example](https://godbolt.or
 ```
 
 The only requirement for `OpCopyLogical` is that it must "logically match" (the underlying type, without the decorations, must be the same).
+
+## Matrix
+
+Matrices are a bit different as the type does **not** define the memory layout.
+
+Using a [simple GLSL example](https://godbolt.org/z/dEdjca4s5) you can see calling
+
+```glsl
+vec4 Foo(mat4 inMat) {
+    return inMat * vec4(1, 2, 3, 4);
+}
+```
+
+the matrix is defined as mathematical concept
+
+```
+      %float = OpTypeFloat 32
+    %v4float = OpTypeVector %float 4
+%mat4v4float = OpTypeMatrix %v4float 4
+```
+
+This is by design as it means you don't have to change types when passing a matrix as a parameter. The compiler also doesn't have to decide to put it in registers or making a local variable (since local variables don't have an explicit layout).
+
+The `MatrixStride` and `ColMajor/`RowMajor` is an attribute of the variable or struct member that has matrix type.
