@@ -108,4 +108,4 @@ the matrix is defined as mathematical concept
 
 This is by design as it means you don't have to change types when passing a matrix as a parameter. The compiler also doesn't have to decide to put it in registers or making a local variable (since local variables don't have an explicit layout).
 
-The `MatrixStride` and `ColMajor/`RowMajor` is an attribute of the variable or struct member that has matrix type.
+The `MatrixStride` and `ColMajor`/`RowMajor` is an attribute of the variable or struct member that has matrix type.
