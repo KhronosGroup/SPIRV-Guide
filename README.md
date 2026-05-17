@@ -22,6 +22,7 @@ The SPIR-V Guide is designed to help developers get up and going with the world 
     - [LocalSize and WorkgroupSize](./chapters/local_size_and_workgroup_size.md)
 - [Types](./chapters/types.md)
 - [Untyped Pointers](./chapters/untyped_pointers.md) (SPV_KHR_untyped_pointers)
+    - [Descriptor Heap](./chapters/descriptor_heap.md) (SPV_EXT_descriptor_heap)
 - [Structs](./chapters/structs.md)
 - [Access Chains](./chapters/access_chains.md)
 - [Storage Class](./chapters/storage_class.md)
