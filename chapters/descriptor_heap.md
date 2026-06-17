@@ -66,6 +66,29 @@ OpDecorateId %heap ArrayStrideIdEXT %descriptor_size
 
 > Note: `OpDecorateId` was added in SPIR-V 1.2. This extension adds a similar `OpMemberDecorateIdEXT` instruction as well.
 
+### Array Stride Size
+
+If you have
+
+```swift
+%ubo = OpTypeBufferEXT Uniform
+%size = OpConstantSizeOfEXT %int %ubo
+
+%ssbo = OpTypeBufferEXT StorageBuffer
+%size = OpConstantSizeOfEXT %int %ssbo
+```
+
+one might think that the size would be derived from 
+
+```
+vkGetPhysicalDeviceDescriptorSizeEXT(UNIFORM_BUFFER);
+vkGetPhysicalDeviceDescriptorSizeEXT(STORAGE_BUFFER);
+```
+
+but this is incorrect to use the precise size here. 
+
+For the stride, the `bufferDescriptorSize` (or `imageDescriptorSize`/`samplerDescriptorSize`) is used.
+
 ## Getting Inside a Buffer Descriptor
 
 Consider the following GLSL code:
