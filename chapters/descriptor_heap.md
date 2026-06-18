@@ -89,6 +89,8 @@ but this is incorrect to use the precise size here.
 
 For the stride, the `bufferDescriptorSize` (or `imageDescriptorSize`/`samplerDescriptorSize`) is used.
 
+Users can still manually provide the precise size (via a spec constants), but `OpConstantSizeOfEXT` is not designed to get the precise size.
+
 ## Getting Inside a Buffer Descriptor
 
 Consider the following GLSL code:
