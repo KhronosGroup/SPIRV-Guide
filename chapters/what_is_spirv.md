@@ -16,7 +16,7 @@ Compiler technology and languages evolve quickly.  SPIR-V provides a common inte
 
 ## SPIR-V for people coming from CPU land
 
-Likely people are used to the idea of how LLVM is used as a IR for the CPU world to get any front end langage to various ISA
+Likely people are used to the idea of how LLVM is used as an IR for the CPU world to get any front end langage to various ISA
 
 ![what_is_spirv_cpu.png](../images/what_is_spirv_cpu.png)
 
