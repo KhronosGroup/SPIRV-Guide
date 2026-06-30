@@ -1,0 +1,12 @@
+version = 1
+SPDX-PackageName = "SPIRV-Guide"
+SPDX-PackageSupplier = "The Khronos Group, Inc."
+SPDX-PackageDownloadLocation = "https://github.com/KhronosGroup/SPIRV-Guide"
+
+[[annotations]]
+precedence = "closest"
+path = [
+    "**",
+]
+SPDX-FileCopyrightText = "The Khronos Group, Inc."
+SPDX-License-Identifier = "CC-BY-4.0"
