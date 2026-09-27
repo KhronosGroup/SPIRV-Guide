@@ -21,7 +21,7 @@ OpExecutionMode %main LocalSize 2 4 1
 
 ## LocalSizeId
 
-`LocalSizeId` is also an Execution Mode, but it allows the size to be set dynamically via things such as specialization constant.
+`LocalSizeId` is also an Execution Mode, but it allows the size to be set dynamically via things such as specialization constants.
 
 ```glsl
 // GLSL Example

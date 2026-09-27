@@ -28,11 +28,11 @@ void main() {
 }
 ```
 
-Taking a closer look at the `OpVariable` we see it is in the [UniformConstant](../chapters/storage_class.md#uniformconstant) Storage Class which is suppose to be "read-only" (yet there is a clear `OpImageWrite` occuring here).
+Taking a closer look at the `OpVariable` we see it is in the [UniformConstant](../chapters/storage_class.md#uniformconstant) Storage Class which is supposed to be "read-only" (yet there is a clear `OpImageWrite` occurring here).
 
 This is possible because the handle to the image is read-only, but the underlying texel data of the image is mutable.
 
-A software mental model of the `OpTypeImage` is to think of it as container that holds metadata while also holding the data of the image.
+A software mental model of the `OpTypeImage` is to think of it as a container that holds metadata while also holding the data of the image.
 
 ```c++
 struct ImageType {
@@ -61,7 +61,7 @@ When these variables are loaded, they will be of type `OpTypeSampledImage`.
 
 ## Non-Combined Sampled Images
 
-The `OpSampledImage` instruction is used to create a sampled image, from two seperate `OpVariable` (one image and one sampler).
+The `OpSampledImage` instruction is used to create a sampled image, from two separate `OpVariable` (one image and one sampler).
 
 To access the sampled image you will use an `OpImage*Sample*` instruction (ex. `OpImageSampleImplicitLod`).
 
@@ -71,7 +71,7 @@ To access the sampled image you will use an `OpImage*Sample*` instruction (ex. `
 
 ## Fetch
 
-There are also `OpImageFetch` (and `OpImageSparseFetch`) instructions which work similar as `OpImage*Sample*`.
+There are also `OpImageFetch` (and `OpImageSparseFetch`) instructions which work similarly to `OpImage*Sample*`.
 
 The `OpImageFetch` only takes integer texel coordinates. The texture data is read directly without any sampling operations.
 
@@ -79,21 +79,21 @@ This means the `OpImageFetch` instruction will directly access through an object
 
 # Non-sampled image
 
-When not using a sampler (ex. storage image), you can directly use an loaded image object of `OpTypeImage`.
+When not using a sampler (ex. storage image), you can directly use a loaded image object of `OpTypeImage`.
 
-Instructions such as `OpImageRead` and `OpImageWrite` will use the result of a `OpLoad`.
+Instructions such as `OpImageRead` and `OpImageWrite` will use the result of an `OpLoad`.
 This `OpLoad` will be loading in a variable of type image (`OpTypeImage`).
 
 ![image_access_storage_image.svg](../images/image_access_storage_image.svg)
 
 ## Loading handle vs loading texel
 
-The following code/diagram shows an example how an `OpImageWrite` instruction is used.
+The following code/diagram shows an example of how an `OpImageWrite` instruction is used.
 
 ![image_access_handle.svg](../images/image_access_handle.svg)
 
-From the code, we see that the `OpImageWrite` calls `OpLoad` to load the the handle (`image_view_a`/`image_view_b`).
-From there is then does a "write" to update the texel data.
+From the code, we see that the `OpImageWrite` calls `OpLoad` to load the handle (`image_view_a`/`image_view_b`).
+From there it then does a "write" to update the texel data.
 The "write" did not update the handle/pointer, but the texel data itself.
 This means there was no "read access" texel data.
 
@@ -102,7 +102,7 @@ These decorations are applied to the texel data, not to the handles.
 
 # OpImage
 
-With many other things also starting with `OpImage*` it is easy to lose track what `OpImage` is for. As the spec says simply:
+With many other things also starting with `OpImage*` it is easy to lose track of what `OpImage` is for. As the spec says simply:
 
 >  [OpImage] Extract the image from a sampled image.
 
@@ -135,7 +135,7 @@ The `OpImageTexelPointer` allows you to take a texel inside an image, and create
 
 Example: `OpAtomicLoad -> OpImageTexelPointer -> OpVariable`
 
-To see this in practice we can view the difference between a `imageAtomicStore` and `imageStore` call
+To see this in practice we can view the difference between an `imageAtomicStore` and `imageStore` call
 
 ```swift
 %1 = OpImageTexelPointer %OpTypePointer %atomic_image %coor %sample
@@ -145,7 +145,7 @@ To see this in practice we can view the difference between a `imageAtomicStore` 
      OpImageWrite %2 %coor %texel
 ```
 
-While the `OpLoad` returns an image object of `OpTypeImage` that we store the new texel, with `OpImageTexelPointer` we get a direct pointer to the texel data and can store scalar value like `OpConstant %int 0`. This is posssible because the `Coordinate` operand is supplied in the `OpImageTexelPointer` instead afterwards in the actual "write" operation.
+While the `OpLoad` returns an image object of `OpTypeImage` that we store the new texel, with `OpImageTexelPointer` we get a direct pointer to the texel data and can store scalar value like `OpConstant %int 0`. This is possible because the `Coordinate` operand is supplied in the `OpImageTexelPointer` instead of afterwards in the actual "write" operation.
 
 You are not expected to do any pointer math on the pointer returned by `OpImageTexelPointer`.
 To get a pointer to a different texel, you should call `OpImageTexelPointer` again, with a different coordinate.

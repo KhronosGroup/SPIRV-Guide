@@ -1,14 +1,14 @@
 # Storage Class
 
-The [SPIR-V Storage Class](https://registry.khronos.org/SPIR-V/specs/unified1/SPIRV.html#_storage_class) is used to designate the memory to be used for a variables.
+The [SPIR-V Storage Class](https://registry.khronos.org/SPIR-V/specs/unified1/SPIRV.html#_storage_class) is used to designate the memory to be used for a variable.
 
 ## UniformConstant
 
-Arguably the most confusing name, the `UniformConstant` can be viewed as a "opaque handle" to images, samples, raytracing acceleration structures, etc variables.
+Arguably the most confusing name, the `UniformConstant` can be viewed as an "opaque handle" to images, samplers, raytracing acceleration structures, etc variables.
 
 The handle itself is immutable / read-only, but the data it points to might not be.
 
-The following is an example of writting to a storage image:
+The following is an example of writing to a storage image:
 
 ```swift
    %type_image = OpTypeImage %uint Buffer 0 0 0 2 Rgba8ui
@@ -20,7 +20,7 @@ The following is an example of writting to a storage image:
 
 ## Input and Output
 
-These are used for interfacing between shader stages. When working with Vulkan, each shaders in a Graphics pipeline can have input/output variables.
+These are used for interfacing between shader stages. When working with Vulkan, each shader in a Graphics pipeline can have input/output variables.
 
 > Note: The Vertex input and Fragment output have special considerations explained in the Vulkan Spec.
 
@@ -50,4 +50,4 @@ This is for pointers into texture storage, for storage buffers. But this is only
 
 ## Interfacing with Vulkan
 
-There is a [table in the Vulkan Spec](https://docs.vulkan.org/spec/latest/chapters/interfaces.html#interfaces-resources-storage-class-correspondence) the maps which Vulkan resource types to each SPIR-V Storage Class. There is also a [Vulkan Guide Chapter](https://github.com/KhronosGroup/Vulkan-Guide/blob/main/chapters/mapping_data_to_shaders.adoc) with examples.
+There is a [table in the Vulkan Spec](https://docs.vulkan.org/spec/latest/chapters/interfaces.html#interfaces-resources-storage-class-correspondence) that maps Vulkan resource types to each SPIR-V Storage Class. There is also a [Vulkan Guide Chapter](https://github.com/KhronosGroup/Vulkan-Guide/blob/main/chapters/mapping_data_to_shaders.adoc) with examples.

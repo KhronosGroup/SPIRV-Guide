@@ -1,6 +1,6 @@
 # What is SPIR-V
 
-[SPIR-V](https://registry.khronos.org/SPIR-V/) is a binary [intermediate representation](https://en.wikipedia.org/wiki/Intermediate_representation) interchange format used to interface with a heterogeneous machine. SPIR-V expresses the operations that can be broken down to match an [ISA](https://en.wikipedia.org/wiki/Instruction_set_architecture) found on a GPU, FPGA, DSP, CPU, etc. The most common use cases of SPIR-V is to be used
+[SPIR-V](https://registry.khronos.org/SPIR-V/) is a binary [intermediate representation](https://en.wikipedia.org/wiki/Intermediate_representation) interchange format used to interface with a heterogeneous machine. SPIR-V expresses the operations that can be broken down to match an [ISA](https://en.wikipedia.org/wiki/Instruction_set_architecture) found on a GPU, FPGA, DSP, CPU, etc. The most common use cases of SPIR-V are to be used
 for graphical-shader stages and compute kernels in other APIs such as Vulkan, OpenGL and OpenCL.
 
 The [Khronos SPIR-V Registry](https://registry.khronos.org/SPIR-V/) is the home for:
@@ -16,7 +16,7 @@ Compiler technology and languages evolve quickly.  SPIR-V provides a common inte
 
 ## SPIR-V for people coming from CPU land
 
-Likely people are used to the idea of how LLVM is used as an IR for the CPU world to get any front end langage to various ISA
+Likely people are used to the idea of how LLVM is used as an IR for the CPU world to get any front end language to various ISA
 
 ![what_is_spirv_cpu.png](../images/what_is_spirv_cpu.png)
 

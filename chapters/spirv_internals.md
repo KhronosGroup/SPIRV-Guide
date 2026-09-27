@@ -30,7 +30,7 @@ A SPIR-V module is a single linear stream of [words](https://registry.khronos.or
 
 It is also very useful to use the spec when looking at SPIR-V disassembly.
 
-Here is an example from a random set of SPIR-V disassembly line
+Here is an example from a random set of SPIR-V disassembly lines
 
 ```swift
 %16 = OpTypeInt 32 1

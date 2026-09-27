@@ -6,7 +6,7 @@ As an intermediate representation, there is not much you can do with SPIR-V by i
 
 ### High Level Languages (HLL)
 
-Languages such GLSL, HLSL, Slang, OpenCL, etc are designed for developers to write their programs in. These languages can then be compiled into SPIR-V modules.
+Languages such as GLSL, HLSL, Slang, OpenCL, etc are designed for developers to write their programs in. These languages can then be compiled into SPIR-V modules.
 
 ### Client API
 
@@ -36,7 +36,7 @@ Within the [Vulkan specification](https://github.com/KhronosGroup/Vulkan-Guide/b
 * [Appendix B: Memory Model](https://docs.vulkan.org/spec/latest/appendices/memorymodel.html)
   defines a memory consistency model: a detailed specification of how to reason about
   concurrent reads and writes to storage, and how to correctly synchronize those accesses.
-  The model spans both actions in the API, and also operations SPIR-V shaders.
+  The model spans both actions in the API, and also operations in SPIR-V shaders.
   This model is optional in Vulkan versions 1.0, 1.1, and 1.2, and is enabled by opting into
   the `VK_KHR_vulkan_memory_model` Vulkan extension, and using the `VulkanKHR` memory model within a SPIR-V
   module.

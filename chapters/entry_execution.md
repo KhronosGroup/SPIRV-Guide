@@ -1,6 +1,6 @@
 # Entry Point, Execution Model, and Execution Mode
 
-The start of every SPIR-V module will contain the `OpEntryPoint` and `OpExecutionMode`/`OpExecutionModeId` instructions. This chapter  takes a more indepth look into them and edge cases tool developrs will need to watch out for.
+The start of every SPIR-V module will contain the `OpEntryPoint` and `OpExecutionMode`/`OpExecutionModeId` instructions. This chapter takes a more in-depth look into them and edge cases tool developers will need to watch out for.
 
 > Note: It is very easy to mix up the term `model` and `mode` if not reading carefully.
 
@@ -85,7 +85,7 @@ void fragment_main() {
 }
 ```
 
-which gets tranlated to roughly the following in SPIR-V
+which gets translated to roughly the following in SPIR-V
 
 ```swift
        OpEntryPoint Vertex %v_main "vertex_main" %vert_out

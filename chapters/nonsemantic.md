@@ -58,7 +58,7 @@ The details of versioning and the string to detect can be found per extension in
 
 ## No literals allowed
 
-For those parsing the grammar, you may notice for non-semantic instruction there are no references to `ValueEnum` or `BitEnum`. So instead of having something such as
+For those parsing the grammar, you may notice for non-semantic instructions there are no references to `ValueEnum` or `BitEnum`. So instead of having something such as
 
 ```json
 { "kind" : "SomeEnumName", "name" : "'Value'" },

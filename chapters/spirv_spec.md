@@ -2,7 +2,7 @@
 
 The SPIR-V Specification (referred usually as the SPIR-V Spec) is the official description of how the SPIR-V intermediate representation is laid out. This defines what is and is not valid SPIR-V.
 
-[Most information regarding the spec can be found on in the SPIR-V registry](https://registry.khronos.org/SPIR-V/)
+[Most information regarding the spec can be found in the SPIR-V registry](https://registry.khronos.org/SPIR-V/)
 
 ## Unified Spec
 
@@ -23,7 +23,7 @@ The spec is currently broken down into 4 sections
 2. [Specification](https://registry.khronos.org/SPIR-V/specs/unified1/SPIRV.html#_a_id_specification_a_specification)
     - Breaks down all the terms used in SPIR-V. It also goes over what is and is not valid.
 3. [Binary Form](https://registry.khronos.org/SPIR-V/specs/unified1/SPIRV.html#_a_id_binary_a_binary_form)
-    - List all instructions, starting with the numerical values for all fields. This is the information found in the [SPIRV-Headers](https://github.com/KhronosGroup/SPIRV-Headers)
+    - Lists all instructions, starting with the numerical values for all fields. This is the information found in the [SPIRV-Headers](https://github.com/KhronosGroup/SPIRV-Headers)
     - [Instructions](https://registry.khronos.org/SPIR-V/specs/unified1/SPIRV.html#_a_id_instructions_a_instructions)
         - Lists the information for each instruction found in SPIR-V
 4. [Appendix](https://registry.khronos.org/SPIR-V/specs/unified1/SPIRV.html#_appendix_a_changes)

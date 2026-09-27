@@ -1,6 +1,6 @@
 # Extended Instruction Sets
 
-[Extended instruction sets](https://registry.khronos.org/SPIR-V/specs/unified1/SPIRV.html#_a_id_extinst_a_extended_instruction_sets) allow SPIR-V to at a core to be agnostic as many high-level shading languages describe rules around the same instructions differently.
+[Extended instruction sets](https://registry.khronos.org/SPIR-V/specs/unified1/SPIRV.html#_a_id_extinst_a_extended_instruction_sets) allow SPIR-V at its core to be agnostic as many high-level shading languages describe rules around the same instructions differently.
 
 > Example: The accuracy for an instruction such as `sin()` might be different in GLSL shaders than it is in OpenCL kernels
 

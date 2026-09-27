@@ -1,6 +1,6 @@
 # Creating a SPIR-V Extension
 
-Some extensions are created internally inside the SPIR-V Working Group, but SPIR-V being an open standard allows for public suggestions/requests of extensions. The following list the process to add an extension, assuming the Working Group has agreed to want to accept it.
+Some extensions are created internally inside the SPIR-V Working Group, but SPIR-V being an open standard allows for public suggestions/requests of extensions. The following lists the process to add an extension, assuming the Working Group has agreed to want to accept it.
 
 - Create a PR to [SPIRV-Registry](https://github.com/KhronosGroup/SPIRV-Registry)
     - Make sure to append the `README.md` in your PR

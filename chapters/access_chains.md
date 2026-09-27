@@ -1,6 +1,6 @@
-# Acesss Chains
+# Access Chains
 
-The chapter aims to give a more in detailed look of how `OpAccessChain` is used in SPIR-V with some example.
+The chapter aims to give a more detailed look of how `OpAccessChain` is used in SPIR-V with some examples.
 
 Examples:
 
@@ -50,7 +50,7 @@ OpMemberDecorate %13 3 Offset 80  // d
 OpMemberDecorate %13 4 Offset 96  // e
 ```
 
-As normal, there is a `OpTypePointer` with the type of struct object and a `OpVariable` with the pointer as the result type.
+As normal, there is an `OpTypePointer` with the type of struct object and an `OpVariable` with the pointer as the result type.
 
 ```swift
 %13 = OpTypeStruct %6 %7 %8 %11 %12
@@ -80,7 +80,7 @@ Since all `Indexes` must be scalar integer type and the values are known at comp
 %37 = OpAccessChain %20 %15 4 5    // Store e[5]
 ```
 
-The important to notice is that access chains are not dependent on the `OpMemberDecorate Offset` value and instead use the structure's hierarchy indices.
+The important thing to notice is that access chains are not dependent on the `OpMemberDecorate Offset` value and instead use the structure's hierarchy indices.
 
 ## Example - In bound access
 
@@ -199,7 +199,7 @@ In this example, there are 2 access chains, one to load and one to store
 %32 = OpAccessChain %31 %function_var 2 2 2 2 2
 ```
 
-Take a look at the `function_var` first, we see that the access chain jumps through a `OpTypeArray` for each index
+Take a look at the `function_var` first, we see that the access chain jumps through an `OpTypeArray` for each index
 
 ```swift
  %6 = OpTypeFloat 32
@@ -227,7 +227,7 @@ While the `function_var` is a trivial case, taking a look at loading `ssbo[2].y[
 %25 = OpVariable %24 StorageBuffer // ssbo
 ```
 
-Something to be caution here is when trying to find information, such as the `OpDecorate` for the struct of the `OpVariable`, your code might have to peel a few  `OpTypeArray` or `OpTypeRuntimeArray` away first. This can be done with a simple while loop
+Something to be cautious of here is when trying to find information, such as the `OpDecorate` for the struct of the `OpVariable`, your code might have to peel a few `OpTypeArray` or `OpTypeRuntimeArray` away first. This can be done with a simple while loop
 
 ```cpp
 while (instruction.opcode() == spv::OpTypeArray || instruction.opcode() == spv::OpTypeRuntimeArray) {
@@ -235,7 +235,7 @@ while (instruction.opcode() == spv::OpTypeArray || instruction.opcode() == spv::
 }
 ```
 
-Also note that some API clients, such as Vulkan, have restrictions how many array-of-arrays are allowed for some storage classes.
+Also note that some API clients, such as Vulkan, have restrictions on how many array-of-arrays are allowed for some storage classes.
 
 ## Example - Chained Access Chains
 

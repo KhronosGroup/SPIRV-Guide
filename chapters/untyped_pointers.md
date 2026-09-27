@@ -20,7 +20,7 @@ This extension adds various `Untyped` instructions, such as:
 
 To better understand this extension, first focus on `OpTypeUntypedPointerKHR` as that is the "core" change. By using this new pointer type, you will find the reason the other "untyped" instructions were added to go along with it.
 
-Let's use this very basic example of load and storing to a storage buffer ([view online](https://godbolt.org/z/5Wx1PsxG7)):
+Let's use this very basic example of loading and storing to a storage buffer ([view online](https://godbolt.org/z/5Wx1PsxG7)):
 
 ```glsl
 layout(set = 0, binding = 0) buffer SSBO {
@@ -52,7 +52,7 @@ This will generate code such as
 
 Notice that `OpLoad` and `OpStore` both have two operands, and **both** can figure out the type is `%uint`. This is the **core motivation** of this extension, to remove the need for having to declare the `%uint` type here in the `Pointer` operand.
 
-With untyped pointer, we still use the access chain to get the `StorageClass`, but we can now remove the redundancy by first turning the pointer into an untyped pointer.
+With untyped pointers, we still use the access chain to get the `StorageClass`, but we can now remove the redundancy by first turning the pointer into an untyped pointer.
 
 ```diff
    %uint = OpTypeInt 32 0
@@ -166,7 +166,7 @@ For `OpLoad`, use the `Result Type` operand instead of the `Pointer` operand. Th
 
 For `OpStore`, use the type of the value being stored (e.g. type of `Object` operand) instead of the `Pointer` operand. This applies to all memory stores (`OpCooperativeMatrixStoreKHR`, `OpAtomicStore`, etc)
 
-For `OpCopyMemory`, either the `Source` or `Target` operand will contain a `OpTypePointer` still.
+For `OpCopyMemory`, either the `Source` or `Target` operand will contain an `OpTypePointer` still.
 
 For `OpCopyMemorySized`, both the `Source` and `Target` could be an untyped pointer, in this case, it interprets the data as an array of 8-bit integers.
 

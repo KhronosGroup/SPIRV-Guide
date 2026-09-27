@@ -1,6 +1,6 @@
 # Structs
 
-The `OpTypeStruct` simply reprents a C style struct.
+The `OpTypeStruct` simply represents a C style struct.
 
 ```glsl
 struct myStruct {
@@ -25,7 +25,7 @@ OpMemberDecorate %myStruct 2 Offset 16
 
 ## Offset ordering
 
-It is common to not realize that the offset don't need to match with the index of the struct.
+It is common to not realize that the offsets don't need to match with the index of the struct.
 
 So the following
 
@@ -55,6 +55,6 @@ OpMemberDecorate %ubo_b 1 Offset 8
 OpMemberDecorate %ubo_b 2 Offset 0
 ```
 
-When dealing with the size or padding of a struct, it is important to not assume the offset are in order of the member index.
+When dealing with the size or padding of a struct, it is important to not assume the offsets are in order of the member index.
 
 > Note: Two index of a struct can't share the same offset values

@@ -1,12 +1,12 @@
 # Extension Overview
 
-Extensions are a way to add features to the SPIR-V spec as described in the [extendability section of the spec](https://registry.khronos.org/SPIR-V/specs/unified1/SPIRV.html#_extendability). All extension can be found in the [SPIRV-Registry](https://github.com/KhronosGroup/SPIRV-Registry/tree/main/extensions)
+Extensions are a way to add features to the SPIR-V spec as described in the [extendability section of the spec](https://registry.khronos.org/SPIR-V/specs/unified1/SPIRV.html#_extendability). All extensions can be found in the [SPIRV-Registry](https://github.com/KhronosGroup/SPIRV-Registry/tree/main/extensions)
 
-Some extensions are "vendor" extension and are labeled as `SPV_VENDOR_Extension_name`. These types of extensions allow a vendor to expose features in SPIR-V shaders which are not going to be available on other vendor's implementations.
+Some extensions are "vendor" extensions and are labeled as `SPV_VENDOR_Extension_name`. These types of extensions allow a vendor to expose features in SPIR-V shaders which are not going to be available on other vendors' implementations.
 
-The rest of the extensions are "multi-vendor" and are labeled as either `SPV_EXT_Extension_name` or `SPV_KHR_Extension_name`. These extensions are sometimes brought into core in new versions. An example is `SPV_KHR_8bit_storage` which was an extension prior to being added to core in SPIR-V 1.5. The means anyone supporting SPIR-V 1.5 is expected to support all the additions from `SPV_KHR_8bit_storage` as they are now "core" or "standard" features.
+The rest of the extensions are "multi-vendor" and are labeled as either `SPV_EXT_Extension_name` or `SPV_KHR_Extension_name`. These extensions are sometimes brought into core in new versions. An example is `SPV_KHR_8bit_storage` which was an extension prior to being added to core in SPIR-V 1.5. This means anyone supporting SPIR-V 1.5 is expected to support all the additions from `SPV_KHR_8bit_storage` as they are now "core" or "standard" features.
 
-> The main difference between `EXT` and `KHR` is that KHR is a Khronos extensions and are ratified by Khronos, therefore are covered by the Khronos IP framework.
+> The main difference between `EXT` and `KHR` is that KHR extensions are Khronos extensions and are ratified by Khronos, therefore are covered by the Khronos IP framework.
 
 > **Tip**: Prepend the URL in the SPIRV-Registry with `http://htmlpreview.github.io/?` to preview the page as html. Example with [SPV_KHR_8bit_storage](http://htmlpreview.github.io/?https://github.com/KhronosGroup/SPIRV-Registry/blob/main/extensions/KHR/SPV_KHR_8bit_storage.html)
 
@@ -30,7 +30,7 @@ void main() {
 }
 ```
 
-produce the following SPIR-V disassembly with `glslangValidator -V example.vert`
+produces the following SPIR-V disassembly with `glslangValidator -V example.vert`
 
 ```swift
 ; Version: 1.0
@@ -63,7 +63,7 @@ There are two main things to take away from this.
 
 ![extension_overview_view_index.png](../images/extension_overview_view_index.png)
 
-that the `MultiView` capability is needed in order to us this prior to SPIR-V 1.3
+that the `MultiView` capability is needed in order to use this prior to SPIR-V 1.3
 
 ![extension_overview_multi_view.png](../images/extension_overview_multi_view.png)
 

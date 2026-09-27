@@ -8,9 +8,9 @@ Parsing of SPIR-V consists of 2 main components, the header and the instructions
 
 ## Header
 
-Because of the known magic number as the first dword in the module, this can be used to decide if the module is big or little endianness.
+Because of the known magic number as the first dword in the module, this can be used to decide if the module is big or little endian.
 
-From here parsing the header is a simple as the following pseudo code:
+From here parsing the header is as simple as the following pseudo code:
 ```cpp
 // spvFixWord used to handle endianness
 uint32_t magic     = spvFixWord(binary[SPV_INDEX_MAGIC_NUMBER], endian);
@@ -58,7 +58,7 @@ Taking a look at a few lines of disassembled SPIR-V
 %6 = TypeInt 32 0
 ```
 
-The assembled binary representation is as followed
+The assembled binary representation is as follows
 
 ```
 0x00020013 0x00000002

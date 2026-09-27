@@ -1,6 +1,6 @@
 # Functions and Blocks
 
-Similar to LLVM, SPIR-V is made of up of `Blocks`. The `Blocks` can together form a `Function`.
+Similar to LLVM, SPIR-V is made up of `Blocks`. The `Blocks` can together form a `Function`.
 
 Using the following GLSL example to help explain the concept:
 
@@ -26,10 +26,10 @@ will produce the following SPIR-V disassembly
 
 ## Function Block
 
-Every function is starts with `OpFunction` and ends with the `OpFunctionEnd` instruction.
+Every function starts with `OpFunction` and ends with the `OpFunctionEnd` instruction.
 
 The `OpFunctionCall` can be used to jump to another function.
 
 ## Blocks
 
-A function may contain many `Blocks`. Every block first starts with a `OpLabel` and ends with a [Block Termination Instruction](https://registry.khronos.org/SPIR-V/specs/unified1/SPIRV.html#Termination).
+A function may contain many `Blocks`. Every block first starts with an `OpLabel` and ends with a [Block Termination Instruction](https://registry.khronos.org/SPIR-V/specs/unified1/SPIRV.html#Termination).

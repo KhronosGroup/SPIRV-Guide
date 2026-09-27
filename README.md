@@ -8,7 +8,7 @@ SPDX-License-Identifier: CC-BY-4.0
 ![SPIR-V logo](./images/spirv_logo.png)
 ![Khronos logo](./images/khronos_logo.png)
 
-The SPIR-V Guide is designed to help developers get up and going with the world of SPIR-V. This guide is targeted at developers needing to use compilers SPIR-V in their tool chains and for developers wishing to develop custom tooling or compilers that outputs SPIR-V.
+The SPIR-V Guide is designed to help developers get up and going with the world of SPIR-V. This guide is targeted at developers needing to use compilers SPIR-V in their tool chains and for developers wishing to develop custom tooling or compilers that output SPIR-V.
 
 ## Logistics Overview
 - [What is SPIR-V?](./chapters/what_is_spirv.md)

@@ -2,11 +2,11 @@
 
 This is the extended instruction set to provide debug information in your SPIR-V, it can even allow users to [step through source code](https://vulkan.org/user/pages/09.events/vulkanised-2023/vulkanised_2023_source_level_shader_debugging_in_vulkan_with_renderdoc.pdf).
 
-While there is `OpLine` and `OpSource` already in SPIR-V, it has been showen to fall short what is needed to give proper debugging information about the source.
+While there is `OpLine` and `OpSource` already in SPIR-V, it has been shown to fall short of what is needed to give proper debugging information about the source.
 
 The [OpenCL.DebugInfo.100](https://registry.khronos.org/SPIR-V/specs/unified1/OpenCL.DebugInfo.100.html) was added around when SPIR-V 1.0 was released. Vulkan wanted a similar debug info for `Shader` SPIR-V and created the [NonSemantic.Shader.DebugInfo.100](https://github.khronos.org/SPIRV-Registry/nonsemantic/NonSemantic.Shader.DebugInfo.html) extended instructions.
 
-Later a 101 revision was added (`NonSemantic.Shader.DebugInfo.101`) and so there is now there is a unified header ([NonSemanticShaderDebugInfo.h](https://github.com/KhronosGroup/SPIRV-Headers/blob/main/include/spirv/unified1/NonSemanticShaderDebugInfo.h)) and the legacy 100 version header ([NonSemanticShaderDebugInfo100.h](https://github.com/KhronosGroup/SPIRV-Headers/blob/main/include/spirv/unified1/NonSemanticShaderDebugInfo100.h))
+Later a 101 revision was added (`NonSemantic.Shader.DebugInfo.101`) and so there is now a unified header ([NonSemanticShaderDebugInfo.h](https://github.com/KhronosGroup/SPIRV-Headers/blob/main/include/spirv/unified1/NonSemanticShaderDebugInfo.h)) and the legacy 100 version header ([NonSemanticShaderDebugInfo100.h](https://github.com/KhronosGroup/SPIRV-Headers/blob/main/include/spirv/unified1/NonSemanticShaderDebugInfo100.h))
 
 As you may have noticed, the `Shader` version is built around the [NonSemantic](https://github.com/KhronosGroup/SPIRV-Guide/blob/main/chapters/nonsemantic.md) extension to make sure anyone who supports [SPV_KHR_non_semantic_info](http://htmlpreview.github.io/?https://github.com/KhronosGroup/SPIRV-Registry/blob/main/extensions/KHR/SPV_KHR_non_semantic_info.html) extension already can now support `Shader DebugInfo`.
 
@@ -66,7 +66,7 @@ You will want to track the `OpExtInstImport`, so first thing will be doing a str
 
 to track the `%debug_info` where it is used later.
 
-Also be aware that there might other version such as `"NonSemantic.Shader.DebugInfo.101"`
+Also be aware that there might be other versions such as `"NonSemantic.Shader.DebugInfo.101"`
 
 ### Getting the source
 
@@ -96,7 +96,7 @@ Example when `DebugSourceContinued` is used
 %debug_source_c = OpExtInst %void %import DebugSourceContinued %source_text_1
 ```
 
-Be care when parsing `DebugSourceContinued` as a new instruciton is **not** a new line.
+Be careful when parsing `DebugSourceContinued` as a new instruction is **not** a new line.
 
 ```swift
 %code0 = OpString "line 1 here

@@ -4,11 +4,11 @@ SPIR-V has various versions currently, starting at 1.0, then 1.1, 1.2, etc.
 
 There is currently no 2.0 and everything is still backward compatible.
 
-SPIR-V is built as an unified specification, therefore you will always see the latest version as there is no real need to view an older SPIR-V version specification.
+SPIR-V is built as a unified specification, therefore you will always see the latest version as there is no real need to view an older SPIR-V version specification.
 
 ## Where versions matter
 
-The most common source of confusion for SPIR-V version is when it comes to `spirv-val`. While the SPIR-V instructions are backward compatible, the rules what is valid or invalid slightly changes over time.
+The most common source of confusion for SPIR-V version is when it comes to `spirv-val`. While the SPIR-V instructions are backward compatible, the rules of what is valid or invalid slightly changes over time.
 
 ### Example - Validation of OpEntryPoint
 

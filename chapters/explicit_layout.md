@@ -98,7 +98,7 @@ vec4 Foo(mat4 inMat) {
 }
 ```
 
-the matrix is defined as mathematical concept
+the matrix is defined as a mathematical concept
 
 ```
       %float = OpTypeFloat 32
