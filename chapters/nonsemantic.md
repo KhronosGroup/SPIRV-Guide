@@ -32,12 +32,12 @@ the output SPIR-V disassembly roughly looks like
 %10  = OpString "Here are two float values %f, %f"
        OpSourceExtension "GL_EXT_debug_printf"
 
-%14  = %2 OpExtInst %13 %1 %10 %11 %12
+%14  = OpExtInst %2 %13 1 %10 %11 %12
 ```
 
 Breaking this down:
 
-- First need to make sure the `SPV_KHR_non_semantic_info` is enabled
+- First need to make sure the `SPV_KHR_non_semantic_info` is enabled (not needed starting with SPIR-V 1.6, where it was incorporated into core)
 - Need to import the name of the non-semantic extension being added with `OpExtInstImport`
 - Use `OpExtInst`
     - Set the `Set` field to the imported non-semantic extension

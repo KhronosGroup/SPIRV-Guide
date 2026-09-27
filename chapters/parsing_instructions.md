@@ -55,7 +55,7 @@ Taking a look at a few lines of disassembled SPIR-V
 ```swift
 %2 = OpTypeVoid
 %3 = OpTypeFunction %2
-%6 = TypeInt 32 0
+%6 = OpTypeInt 32 0
 ```
 
 The assembled binary representation is as follows

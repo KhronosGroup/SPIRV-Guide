@@ -260,7 +260,7 @@ layout(set = 0, binding = 1) buffer OutputBuffer {
 } out_v;
 
 void main() {
-    in_v.output_values = out_v.input_values;
+    out_v.output_values = in_v.input_values;
 }
 ```
 

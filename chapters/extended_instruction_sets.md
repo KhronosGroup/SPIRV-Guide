@@ -51,7 +51,7 @@ Breaking this down:
 
 - Need to import the name of the extended instruction set being added with `OpExtInstImport`
 - Use `OpExtInst`
-    - Set the `Set` field to the imported non-semantic extension
-    - Set the `Instruction` to the non-semantic extension specific instruction being added
+    - Set the `Set` field to the imported extended instruction set
+    - Set the `Instruction` to the extended instruction set specific instruction being added
         - For `GLSL.std.450` it is listed as being instruction `13` in the [extended instruction set spec](https://registry.khronos.org/SPIR-V/specs/unified1/GLSL.std.450.html)
         - ![extended_instruction_sets_sin.png](../images/extended_instruction_sets_sin.png)

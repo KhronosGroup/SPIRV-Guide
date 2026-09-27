@@ -45,7 +45,7 @@ The `OpExecutionMode` and `OpExecutionModeId` instructions reference an `Entry P
 
 > A notable update in the SPIR-V 1.2 spec is that `OpExecutionModeId` was added.
 
-> Also worth noting that as of now, there are no possible uses of `OpExecutionModeId` for Shader capability-based client APIs such as Vulkan.
+> Also worth noting that in Vulkan, `OpExecutionModeId` (e.g. `LocalSizeId`) can only be used with Vulkan 1.3 or `VK_KHR_maintenance4` (and the `maintenance4` feature enabled).
 
 The only difference between the two instructions is how it handles possible `Extra Operands`.
 

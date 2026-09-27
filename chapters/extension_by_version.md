@@ -21,3 +21,8 @@ With some minor versions of SPIR-V some extensions are added into the [unified s
     - [SPV_EXT_physical_storage_buffer](https://github.com/KhronosGroup/SPIRV-Registry/blob/main/extensions/EXT/SPV_EXT_physical_storage_buffer.asciidoc)
     - [SPV_KHR_physical_storage_buffer](https://github.com/KhronosGroup/SPIRV-Registry/blob/main/extensions/KHR/SPV_KHR_physical_storage_buffer.asciidoc)
     - [SPV_KHR_vulkan_memory_model](https://github.com/KhronosGroup/SPIRV-Registry/blob/main/extensions/KHR/SPV_KHR_vulkan_memory_model.asciidoc)
+- SPIR-V 1.6
+    - [SPV_KHR_non_semantic_info](https://github.com/KhronosGroup/SPIRV-Registry/blob/main/extensions/KHR/SPV_KHR_non_semantic_info.asciidoc)
+    - [SPV_KHR_integer_dot_product](https://github.com/KhronosGroup/SPIRV-Registry/blob/main/extensions/KHR/SPV_KHR_integer_dot_product.asciidoc)
+    - [SPV_KHR_terminate_invocation](https://github.com/KhronosGroup/SPIRV-Registry/blob/main/extensions/KHR/SPV_KHR_terminate_invocation.asciidoc)
+    - [SPV_EXT_demote_to_helper_invocation](https://github.com/KhronosGroup/SPIRV-Registry/blob/main/extensions/EXT/SPV_EXT_demote_to_helper_invocation.asciidoc)

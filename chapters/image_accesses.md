@@ -55,7 +55,7 @@ When using a sampler, you must have an `OpTypeSampledImage` object, this will be
 
 ## Combined Image Samplers
 
-The `Input` `OpVariable` can sometimes contain both the Sampler and Image (Vulkan calls these `VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER`).
+The `UniformConstant` `OpVariable` can sometimes contain both the Sampler and Image (Vulkan calls these `VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER`).
 
 When these variables are loaded, they will be of type `OpTypeSampledImage`.
 

@@ -10,9 +10,9 @@ This idea can also be found in the LLVM community, which has moved to `Opaque Po
 
 This extension adds various `Untyped` instructions, such as:
 
-- Op**Untyped**VariableKHR`
-- Op**Untyped**AccessChainKHR`
-- OpType**Untyped**PointerKHR`
+- Op**Untyped**VariableKHR
+- Op**Untyped**AccessChainKHR
+- OpType**Untyped**PointerKHR
 
 > `OpTypeUntypedPointerKHR` may seem strange, but it follows the `OpType*` convention and is just unfortunate the "type" and "untyped" are both in the name
 
