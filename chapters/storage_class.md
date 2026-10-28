@@ -26,8 +26,16 @@ These are used for interfacing between shader stages. When working with Vulkan, 
 
 ## Uniform and StorageBuffer
 
-- `Uniform` is read-only
-- `StorageBuffer` is read and write
+In Vulkan, the storage class and structure decoration determine the buffer type:
+
+- `Uniform` with `Block` describes a uniform buffer, whose data is read-only to the shader.
+- `Uniform` with `BufferBlock` is the older representation of a storage buffer, whose data can be read and written.
+- `StorageBuffer` with `Block` describes a storage buffer, whose data can also be read and written.
+
+`NonWritable` and `NonReadable` decorations can restrict storage-buffer access.
+
+Unlike the opaque handles in `UniformConstant`, these buffer variables expose their contents through pointers, using operations such as `OpAccessChain`, `OpLoad`, and `OpStore`.
+In Vulkan, uniform and storage buffers therefore use `Uniform` or `StorageBuffer`, not `UniformConstant`; the latter is used for resources accessed through opaque types, such as images and samplers.
 
 `StorageBuffer` was added in SPIR-V 1.3, more details and code example can be found in the [Vulkan Guide VK_KHR_storage_buffer_storage_class](https://github.com/KhronosGroup/Vulkan-Guide/blob/main/chapters/extensions/shader_features.adoc#vk_khr_storage_buffer_storage_class) write up.
 
